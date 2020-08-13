@@ -103,7 +103,7 @@ public class Ball : MonoBehaviour
         if (col.gameObject.tag == "Ball" && col.gameObject.GetComponent<Ball>().isRinging) return;
         else
         {
-            Debug.Log("Ringed");
+            //Debug.Log("Ringed");
             isRinging = true;
             audioSource.Play();
         }
