@@ -1,9 +1,7 @@
 ŽžŠÔŒo‰ß‚Åƒ{ƒE‚Ì’·‚³Œ¸­(‚¿‚å‚Á‚Æ‚¸‚ÂƒXƒRƒA‰Ò‚®‘Îô)
 ‚³‚ç‚ÉŒ¸­‘¬“x‚à‰Á‘¬‚·‚é
-‰ñ“]‚Å«s‚Á‚½‚è‚Å‚«‚éƒoƒO’¼‚·
 ƒAƒCƒeƒ€‚ào‚·
 ‚Ô‚Â‚©‚Á‚½‚Æ‚«‚Æ‚©ƒGƒtƒFƒNƒgo‚·
-Œø‰Ê‰¹‚ào‚·
 ƒŠƒtƒeƒBƒ“ƒO‚Å“¾“_‘‚â‚·H
 ƒƒ_ƒ‹ƒQ[ƒ€‚Ý‚½‚¢‚É‚µ‚½‚ÌƒJƒS‚É‚¢‚ê‚½‚ç–Ê”’‚¢
 ‚È‚É‚ð‹‚ß‚ç‚ê‚Ä‚¢‚é‚Ì‚©
@@ -20,10 +18,13 @@
 ‹Ù’£Š´‚Ì‚ ‚éƒXƒ^ƒCƒŠƒbƒVƒ…‚Èbgm‰Á‚¦‚é
 bgm‚ð1¬à‚²‚Æ‚É‹æ•ª‚¯‚µ‚Ä‚»‚Ì¬à‚²‚Æ‚ÉƒtƒB[ƒ‹ƒh‚Éˆá‚Á‚½Œø‰Ê‚ª‚Å‚é(‰¹ƒnƒ‚µ‚È‚ª‚ç)
 ‚È‚ñ‚©ƒ|ƒbƒvƒR[ƒ“‚Ý‚½‚¢
+—Ž‚¿‚Ä‚­‚é’e‚ªŽ©•ª‚Ìs“®‚ÅŒˆ‚Ü‚Á‚Ä‚µ‚Ü‚¤ˆÈã“G‚ª‚Å‚Ä‚­‚éƒ^ƒCƒv‚ÌƒQ[ƒ€‚æ‚è‚³‚ç‚Éˆêl—V‚Ñ‚É‹ß‚¢(ƒŠƒtƒeƒBƒ“ƒO‚È‚Ç)
+‚â‚Á‚Ï‚èƒpƒbƒP[ƒWƒ“ƒO‚µ‚ÄƒXƒe[ƒW‚É‚µ‚Ä‚µ‚Ü‚¤‚Ù‚¤‚ª‚¢‚¢‚©‚à
+ƒtƒB[ƒ‹ƒhƒXƒ}ƒbƒVƒ…‚Ý‚½‚¢‚Éƒ‰ƒ“ƒ_ƒ€‚Éó‹µ‚ª•Ï‚í‚é
 
 Eƒ‚[ƒh
 ƒGƒ“ƒhƒŒƒXƒ‚[ƒh
-‚¨‘è‚ð‚Ç‚ñ‚Ç‚ñ‚±‚È‚·ƒXƒg[ƒŠ[ƒ‚[ƒh
+‚¨‘è‚ð‚Ç‚ñ‚Ç‚ñ‚±‚È‚·ƒXƒg[ƒŠ[ƒ‚[ƒh(‚Â‚Ü‚èDownWell‚Æ‚©‚É‚ ‚éi‚Þ‰õŠ´)
 
 ¶‰E‚­‚Á‚Â‚«
 ‹­§‰ñ“]
@@ -36,3 +37,8 @@ bgm‚ð1¬à‚²‚Æ‚É‹æ•ª‚¯‚µ‚Ä‚»‚Ì¬à‚²‚Æ‚ÉƒtƒB[ƒ‹ƒh‚Éˆá‚Á‚½Œø‰Ê‚ª‚Å‚é(‰¹ƒnƒ‚µ‚È‚
 ƒGƒ“ƒhƒŒƒX‚Ìˆêl—V‚ÑŒn
 ƒuƒƒbƒN•ö‚µ
 EveryExtendExtra
+
+‚â‚Á‚½‚±‚Æ
+‰ñ“]‚Å«s‚Á‚½‚è‚Å‚«‚éƒoƒO’¼‚µ‚½
+Œø‰Ê‰¹‚Æ‚è‚ ‚¦‚¸‚Ô‚Â‚©‚Á‚½‚Ì‚Â‚¯‚Ä‚Ý‚½
+—Î‚Ìƒ{[ƒ‹‚Æ‚ç‚È‚¢‚Æ‚¾‚ñ‚¾‚ñ’Z‚­‚È‚é‚æ‚¤‚É‚µ‚½(‚ ‚ñ‚Ü‚è‚ÈˆÀ‘Sô‚ðŽæ‚ç‚ê‚È‚¢‚½‚ß)

@@ -10,18 +10,26 @@ public class Bow : MonoBehaviour
     //回転の速度入れるのにつかう
     Rigidbody2D rigidbody2d;
     //上下の高さ固定につかう
-    Vector3 iniPos;
+    Vector2 iniPos;
+
+    float bowScale;
+
+    Vector2 iniScale;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         iniPos = transform.position;
+        bowScale = 1f;
+        iniScale = transform.localScale;
     }
 
     // Update is called once per frame
     void Update()
     {
         BowMove();
+
+        BowScaler();
     }
 
     void BowMove()
@@ -45,6 +53,26 @@ public class Bow : MonoBehaviour
             Vector3 vec = transform.position;
             vec.y = iniPos.y;
             transform.position = vec;
+        }
+    }
+
+    void BowScaler()
+    {
+        bowScale -= 0.1f * Time.deltaTime;
+        if (bowScale <= 0f) Score.GameOver();
+        Vector2 vec = iniScale;
+        vec.x = bowScale * iniScale.x;
+        transform.localScale = vec;
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag != "Ball") return;
+        Debug.Log(col.gameObject.tag);
+        Debug.Log(col.gameObject.GetComponent<Ball>().prevBallState);
+        if (col.gameObject.tag == "Ball" && col.gameObject.GetComponent<Ball>().prevBallState == Ball.BALL_STATE.GREEN)
+        {
+            bowScale = Mathf.Clamp(bowScale + 0.15f, 0f, 1f);
         }
     }
 }

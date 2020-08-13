@@ -34,6 +34,8 @@ public class Ball : MonoBehaviour
 
     public bool isRinging { private set; get; }
 
+    public BALL_STATE prevBallState;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,7 +75,7 @@ public class Ball : MonoBehaviour
             {
                 case BALL_STATE.GREEN:
                     StateAndColorSetter(BALL_STATE.RED);
-                    Score.scoreAdder(-1);
+                    //Score.scoreAdder(-1);
                     break;
 
                 case BALL_STATE.BLUE:
@@ -109,12 +111,13 @@ public class Ball : MonoBehaviour
         }
         //プレイヤー以外のぶつかりは無視
         if (col.gameObject.tag != "Player") return;
-        
+
+        prevBallState = ballState;
         //ボールの色によって運命が決まる
         switch (ballState)
         {
             case BALL_STATE.GREEN:
-                Score.scoreAdder(2);
+                Score.ScoreAdder();
                 GameObject newBall = Instantiate(ball);
                 newBall.GetComponent<Rigidbody2D>().velocity =
                     Quaternion.Euler(0, 0, Random.Range(-30f, 30f)) * rigidbody2d.velocity.normalized * 10f;
@@ -122,6 +125,7 @@ public class Ball : MonoBehaviour
                 break;
 
             case BALL_STATE.RED:
+
                 Score.GameOver();
                 break;
         }
