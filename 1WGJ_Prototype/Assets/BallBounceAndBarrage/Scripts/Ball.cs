@@ -11,6 +11,7 @@ public class Ball : MonoBehaviour
     SpriteRenderer spRenderer;
     //跳ね返るボールの方向取るのに使う
     Rigidbody2D rigidbody2d;
+    AudioSource audioSource;
 
     //分裂するボールのプレハブ
     [SerializeField]
@@ -37,6 +38,7 @@ public class Ball : MonoBehaviour
         cirCol2D = GetComponent<CircleCollider2D>();
         spRenderer = GetComponent<SpriteRenderer>();
         rigidbody2d = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
 
         //色を定義(staticで持った方がいいかも)
         ballColor[(int)BALL_STATE.GREEN] = new Color(60, 183, 72, 255) / 255;
@@ -95,6 +97,7 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
+        audioSource.Play();
         //プレイヤー以外のぶつかりは無視
         if (col.gameObject.tag != "Player") return;
         
