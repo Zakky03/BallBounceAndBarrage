@@ -29,6 +29,9 @@ public class Ball : MonoBehaviour
     [SerializeField]
     public BALL_STATE ballState;
 
+    //[SerializeField]
+    //bool isFirstBall = false;
+
     //ボールの状態の色
     Color[] ballColor = new Color[(int)BALL_STATE.RED + 1];
 
@@ -43,6 +46,8 @@ public class Ball : MonoBehaviour
         spRenderer = GetComponent<SpriteRenderer>();
         rigidbody2d = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+
+        //if (isFirstBall) rigidbody2d.velocity = Vector2.up * 10f;
 
         //色を定義(staticで持った方がいいかも)
         ballColor[(int)BALL_STATE.GREEN] = new Color(60, 183, 72, 255) / 255;

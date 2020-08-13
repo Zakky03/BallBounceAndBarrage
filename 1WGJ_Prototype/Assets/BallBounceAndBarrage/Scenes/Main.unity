@@ -894,7 +894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5008431049201267029, guid: 0b04e3efa9e775143930ecf461a2a99b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 5008431049201267029, guid: 0b04e3efa9e775143930ecf461a2a99b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -934,6 +934,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5008431049201267033, guid: 0b04e3efa9e775143930ecf461a2a99b, type: 3}
       propertyPath: ballState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008431049201267033, guid: 0b04e3efa9e775143930ecf461a2a99b, type: 3}
+      propertyPath: iniVelo.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008431049201267033, guid: 0b04e3efa9e775143930ecf461a2a99b, type: 3}
+      propertyPath: isFirstBall
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5008431049201267034, guid: 0b04e3efa9e775143930ecf461a2a99b, type: 3}
