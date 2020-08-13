@@ -32,6 +32,8 @@ public class Ball : MonoBehaviour
     //ボールの状態の色
     Color[] ballColor = new Color[(int)BALL_STATE.RED + 1];
 
+    public bool isRinging { private set; get; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +57,7 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isRinging = false;
         //上下に行きすぎたら位置をスクロールする
         BallScroll();
     }
@@ -97,7 +100,13 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        audioSource.Play();
+        if (col.gameObject.tag == "Ball" && col.gameObject.GetComponent<Ball>().isRinging) return;
+        else
+        {
+            Debug.Log("Ringed");
+            isRinging = true;
+            audioSource.Play();
+        }
         //プレイヤー以外のぶつかりは無視
         if (col.gameObject.tag != "Player") return;
         
