@@ -34,6 +34,10 @@ public class Score : MonoBehaviour
             + "\nHighScore: " + highScore.ToString();
     }
 
+    static public void scoreAdder()
+    {
+        score++;
+    }
     static public void scoreAdder(int s)
     {
         score += s;
