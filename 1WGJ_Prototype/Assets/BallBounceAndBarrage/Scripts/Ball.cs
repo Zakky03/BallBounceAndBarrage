@@ -5,13 +5,18 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    //スクロールする距離を測るのにつかう
     CircleCollider2D cirCol2D;
+    //色を変えるのに使う
     SpriteRenderer spRenderer;
-    //Rigidbody2D rigidbody2d;
+    //跳ね返るボールの方向取るのに使う
+    Rigidbody2D rigidbody2d;
 
+    //分裂するボールのプレハブ
     [SerializeField]
     GameObject ball;
 
+    //ボールの状態
     [SerializeField]
     public enum BALL_STATE
     {
@@ -19,31 +24,44 @@ public class Ball : MonoBehaviour
         BLUE,
         RED
     }
+    //自分のボールの状態
     [SerializeField]
     public BALL_STATE ballState;
 
-    Color[] ballColor = new Color[3];
+    //ボールの状態の色
+    Color[] ballColor = new Color[(int)BALL_STATE.RED + 1];
 
     // Start is called before the first frame update
     void Start()
     {
         cirCol2D = GetComponent<CircleCollider2D>();
         spRenderer = GetComponent<SpriteRenderer>();
-        //rigidbody2d = GetComponent<Rigidbody2D>();
+        rigidbody2d = GetComponent<Rigidbody2D>();
 
+        //色を定義(staticで持った方がいいかも)
         ballColor[(int)BALL_STATE.GREEN] = new Color(60, 183, 72, 255) / 255;
         ballColor[(int)BALL_STATE.BLUE] = new Color(39, 104, 135, 255) / 255;
         ballColor[(int)BALL_STATE.RED] = new Color(248, 110, 112, 255) / 255;
 
+        //最初はBLUE状態から
         StateAndColorSetter(BALL_STATE.BLUE);
 
+        //シーンのボールの個数増やす
         Score.ballNum++;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //上下に行きすぎたら位置をスクロールする
+        BallScroll();
+    }
+
+    void BallScroll()
+    {
+        //ボールが上下に過ぎ去った時
         float tmp = 5 + cirCol2D.radius * transform.localScale.x;
+        //落ちた時ボールの色に応じて状態が変化する
         while (transform.position.y <= -tmp)
         {
             switch (ballState)
@@ -66,6 +84,7 @@ public class Ball : MonoBehaviour
             vec.y += tmp * 2;
             transform.position = vec;
         }
+        //あがった時は変化なし
         while (transform.position.y >= tmp)
         {
             Vector2 vec = transform.position;
@@ -76,17 +95,18 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
+        //プレイヤー以外のぶつかりは無視
         if (col.gameObject.tag != "Player") return;
         
+        //ボールの色によって運命が決まる
         switch (ballState)
         {
             case BALL_STATE.GREEN:
                 Score.scoreAdder(2);
                 GameObject newBall = Instantiate(ball);
                 newBall.GetComponent<Rigidbody2D>().velocity =
-                    Quaternion.Euler(0, 0, Random.Range(-30f, 30f)) * Vector2.up * 10f;
+                    Quaternion.Euler(0, 0, Random.Range(-30f, 30f)) * rigidbody2d.velocity.normalized * 10f;
                 StateAndColorSetter(BALL_STATE.BLUE);
-                //rigidbody2d.velocity = Vector2.up * 10f;
                 break;
 
             case BALL_STATE.RED:
@@ -97,13 +117,16 @@ public class Ball : MonoBehaviour
 
     void StateAndColorSetter(BALL_STATE bState)
     {
+        //ボールの色と状態を代入する
         ballState = bState;
         spRenderer.color = ballColor[(int)bState];
     }
 
     void OnDestroy()
     {
+        //死んだときボールの数減らす
         Score.ballNum--;
+        //ボール0のときGameOver
         if (Score.ballNum == 0)
         {
             Score.GameOver();
