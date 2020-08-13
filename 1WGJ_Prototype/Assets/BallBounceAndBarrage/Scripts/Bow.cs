@@ -68,8 +68,8 @@ public class Bow : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag != "Ball") return;
-        Debug.Log(col.gameObject.tag);
-        Debug.Log(col.gameObject.GetComponent<Ball>().prevBallState);
+        //Debug.Log(col.gameObject.tag);
+        //Debug.Log(col.gameObject.GetComponent<Ball>().prevBallState);
         if (col.gameObject.tag == "Ball" && col.gameObject.GetComponent<Ball>().prevBallState == Ball.BALL_STATE.GREEN)
         {
             bowScale = Mathf.Clamp(bowScale + 0.15f, 0f, 1f);
