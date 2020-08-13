@@ -8,11 +8,13 @@ public class Bow : MonoBehaviour
     float ω;
     float θ;
     Rigidbody2D rigidbody2d;
+    Vector3 iniPos;
     // Start is called before the first frame update
     void Start()
     {
         θ = 0f;
         rigidbody2d = GetComponent<Rigidbody2D>();
+        iniPos = transform.position;
     }
 
     // Update is called once per frame
@@ -34,5 +36,11 @@ public class Bow : MonoBehaviour
         rigidbody2d.angularVelocity = θ;
 
         rigidbody2d.velocity += new Vector2(100f * Input.GetAxis("Horizontal") * Time.deltaTime, 0f);
+
+        {
+            Vector3 vec = transform.position;
+            vec.y = iniPos.y;
+            transform.position = vec;
+        }
     }
 }

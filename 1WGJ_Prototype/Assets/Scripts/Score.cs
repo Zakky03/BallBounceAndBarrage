@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Score : MonoBehaviour
 {
@@ -27,9 +28,15 @@ public class Score : MonoBehaviour
             + "\nHighScore: " + highScore.ToString();
     }
 
-    static public void scoreAdder()
+    static public void scoreAdder(int s)
     {
-        score++;
+        score += s;
+    }
+
+    static public void GameOver()
+    {
+        Debug.Log("GameOver");
+        SceneManager.LoadScene("Main");
         if (highScore < score) highScore = score;
     }
 }
