@@ -4,29 +4,23 @@
 ‚Ô‚Â‚©‚Á‚½‚Æ‚«‚Æ‚©ƒGƒtƒFƒNƒgo‚·
 ƒŠƒtƒeƒBƒ“ƒO‚Å“¾“_‘‚â‚·H
 ƒƒ_ƒ‹ƒQ[ƒ€‚Ý‚½‚¢‚É‚µ‚½‚ÌƒJƒS‚É‚¢‚ê‚½‚ç–Ê”’‚¢
-‚È‚É‚ð‹‚ß‚ç‚ê‚Ä‚¢‚é‚Ì‚©
-ƒLƒƒƒ‰ƒNƒ^[‚Æ‚©ƒQ[ƒ€«‚Æ‚©H
-ƒƒeƒIƒX
-
+‚È‚É‚ð‹‚ß‚ç‚ê‚Ä‚¢‚é‚Ì‚©(ƒLƒƒƒ‰ƒNƒ^[‚Æ‚©ƒQ[ƒ€«‚Æ‚©)
 Ô‚¢‹Ê‚Íƒ{ƒE‚Ì’[‚Å‚Æ‚ê‚ÎÂ‚É‚à‚Ç‚é‚Æ‚©
 ƒ{ƒE‚Ì— •\‚Å”½”­ŒW”•Ï‚¦‚é
-’e–‹‚ð”ð‚¯‚é–Ê”’‚³
+
 ‚Õ‚æ‚Õ‚æ‚âƒƒeƒIƒX‚Ý‚½‚¢‚É‚¢‚Á‚Ï‚¢‚½‚ß‚ÄÁ‚·‚±‚Æ‚Å‘u‰õŠ´‚Æ‚“¾“_‚ª‘_‚¦‚é(ƒŠƒXƒN‚ÆƒŠƒ^[ƒ“)
 ˆê‰ñ‚ÅŽ€‚Ê‚Æ“‚“Ë‚È‚Ì‚ÅHP2‰ð‚©‚É‚·‚é
 ‚Æ‚è‚ ‚¦‚¸’†S‚É˜‚¦‚é‚±‚Æ‚Í"‘‚â‚·‘u‰õŠ´"
 ‹Ù’£Š´‚Ì‚ ‚éƒXƒ^ƒCƒŠƒbƒVƒ…‚Èbgm‰Á‚¦‚é
-bgm‚ð1¬à‚²‚Æ‚É‹æ•ª‚¯‚µ‚Ä‚»‚Ì¬à‚²‚Æ‚ÉƒtƒB[ƒ‹ƒh‚Éˆá‚Á‚½Œø‰Ê‚ª‚Å‚é(‰¹ƒnƒ‚µ‚È‚ª‚ç)
-‚È‚ñ‚©ƒ|ƒbƒvƒR[ƒ“‚Ý‚½‚¢
 —Ž‚¿‚Ä‚­‚é’e‚ªŽ©•ª‚Ìs“®‚ÅŒˆ‚Ü‚Á‚Ä‚µ‚Ü‚¤ˆÈã“G‚ª‚Å‚Ä‚­‚éƒ^ƒCƒv‚ÌƒQ[ƒ€‚æ‚è‚³‚ç‚Éˆêl—V‚Ñ‚É‹ß‚¢(ƒŠƒtƒeƒBƒ“ƒO‚È‚Ç)
 ‚â‚Á‚Ï‚èƒpƒbƒP[ƒWƒ“ƒO‚µ‚ÄƒXƒe[ƒW‚É‚µ‚Ä‚µ‚Ü‚¤‚Ù‚¤‚ª‚¢‚¢‚©‚à
 ƒtƒB[ƒ‹ƒhƒXƒ}ƒbƒVƒ…‚Ý‚½‚¢‚Éƒ‰ƒ“ƒ_ƒ€‚Éó‹µ‚ª•Ï‚í‚é
-ÅIƒXƒRƒA‚ÍƒJƒS‚É“ü‚ê‚½ƒ{[ƒ‹‚Ì” x ‰æ–Ê“à‚Éo‚µ‚½’e‚Ì”‚ÌÅ‘å
-’µ‚Ë•Ô‚¹‚é‚Æ‚â‚Á‚Ï‚è“–‚Ä‚½‚­‚È‚é‚æ‚Ë
-Â‚¢ƒ{[ƒ‹‚ð’µ‚Ë•Ô‚µ‚Ä“I‚É‚ ‚Ä‚é‚Æ‚³‚ç‚Éƒ|ƒCƒ“ƒg
-W‚ß‚½ƒ{[ƒ‹‚ð–Ê‚Ì’†S‚©‚çŒ‚‚Ä‚é
 Â‚¢ƒ{[ƒ‹‚ðÁ‚µ‚Ä“¾“_‚ð‰Ò‚®‚Ì‚Í‘Š«‚ªˆ«‚¢(—Î‚É‚µ‚Ä“¾“_‚ð‰Ò‚®‚±‚Æ‚à‚Å‚«‚é‚Ì‚Å)
+Whether(ƒMƒ~ƒbƒN)‚ªŽžŠÔŒo‰ß‚²‚Æ‚É•Ï‚í‚é
 
 ‚Ó‚â‚·‚ ‚Ä‚éW‚ß‚é‚©‚í‚·
+‚¢‚Ü‚Ì‚Æ‚±‘‚â‚·‚©‚í‚·‚Ì‚Ý
+’e–‹‚ð”ð‚¯‚é–Ê”’‚³
 
 Eƒ‚[ƒh
 ƒGƒ“ƒhƒŒƒXƒ‚[ƒh
@@ -43,6 +37,7 @@ bgm‚ð1¬à‚²‚Æ‚É‹æ•ª‚¯‚µ‚Ä‚»‚Ì¬à‚²‚Æ‚ÉƒtƒB[ƒ‹ƒh‚Éˆá‚Á‚½Œø‰Ê‚ª‚Å‚é(‰¹ƒnƒ‚µ‚È‚
 ƒGƒ“ƒhƒŒƒX‚Ìˆêl—V‚ÑŒn
 ƒuƒƒbƒN•ö‚µ
 EveryExtendExtra
+ƒƒeƒIƒX
 
 ‚â‚Á‚½‚±‚Æ
 ‰ñ“]‚Å«s‚Á‚½‚è‚Å‚«‚éƒoƒO’¼‚µ‚½
@@ -50,8 +45,13 @@ EveryExtendExtra
 —Î‚Ìƒ{[ƒ‹‚Æ‚ç‚È‚¢‚Æ‚¾‚ñ‚¾‚ñ’Z‚­‚È‚é‚æ‚¤‚É‚µ‚½(‚ ‚ñ‚Ü‚è‚ÈˆÀ‘Sô‚ðŽæ‚ç‚ê‚È‚¢‚½‚ß)
 ƒ{[ƒ‹‚ÌˆÊ’u’²®
 
-Whether(ƒMƒ~ƒbƒN)‚ªŽžŠÔŒo‰ß‚²‚Æ‚É•Ï‚í‚é
 
 —Dæ“x’á
 “ñlƒvƒŒƒC‚Å•Ð•û‚Í•—‚©‚¹‚éƒTƒu–ð
 ‹¦—Í‚àƒŠƒAƒ‹ƒtƒ@ƒCƒg‚àŒNŽŸ‘æ
+bgm‚ð1¬à‚²‚Æ‚É‹æ•ª‚¯‚µ‚Ä‚»‚Ì¬à‚²‚Æ‚ÉƒtƒB[ƒ‹ƒh‚Éˆá‚Á‚½Œø‰Ê‚ª‚Å‚é(‰¹ƒnƒ‚µ‚È‚ª‚ç)
+‚È‚ñ‚©ƒ|ƒbƒvƒR[ƒ“‚Ý‚½‚¢
+ÅIƒXƒRƒA‚ÍƒJƒS‚É“ü‚ê‚½ƒ{[ƒ‹‚Ì” x ‰æ–Ê“à‚Éo‚µ‚½’e‚Ì”‚ÌÅ‘å
+’µ‚Ë•Ô‚¹‚é‚Æ‚â‚Á‚Ï‚è“–‚Ä‚½‚­‚È‚é‚æ‚Ë
+Â‚¢ƒ{[ƒ‹‚ð’µ‚Ë•Ô‚µ‚Ä“I‚É‚ ‚Ä‚é‚Æ‚³‚ç‚Éƒ|ƒCƒ“ƒg
+W‚ß‚½ƒ{[ƒ‹‚ð–Ê‚Ì’†S‚©‚çŒ‚‚Ä‚é

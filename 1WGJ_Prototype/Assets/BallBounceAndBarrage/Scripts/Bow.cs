@@ -36,11 +36,11 @@ public class Bow : MonoBehaviour
     {
         //ボウを回転させる
         θ = 0f;
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") || Input.GetKey(KeyCode.Z))
         {
             θ = ω;
         }
-        if (Input.GetButton("Fire2"))
+        if (Input.GetButton("Fire2") || Input.GetKey(KeyCode.X))
         {
             θ = -ω;
         }
