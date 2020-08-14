@@ -46,6 +46,7 @@ public class Bow : MonoBehaviour
         }
         rigidbody2d.angularVelocity = θ;
 
+        //ボウの横移動
         rigidbody2d.velocity += new Vector2(100f * Input.GetAxis("Horizontal") * Time.deltaTime, 0f);
 
         //ボウの高さを一定にする
@@ -68,9 +69,8 @@ public class Bow : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag != "Ball") return;
-        //Debug.Log(col.gameObject.tag);
-        //Debug.Log(col.gameObject.GetComponent<Ball>().prevBallState);
-        if (col.gameObject.tag == "Ball" && col.gameObject.GetComponent<Ball>().prevBallState == Ball.BALL_STATE.GREEN)
+        Debug.Log(col.gameObject.GetComponent<Ball>().prevBallState);
+        if (col.gameObject.GetComponent<Ball>().prevBallState == Ball.BALL_STATE.GREEN)
         {
             bowScale = Mathf.Clamp(bowScale + 0.15f, 0f, 1f);
         }

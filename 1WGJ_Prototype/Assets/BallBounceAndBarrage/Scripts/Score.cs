@@ -9,11 +9,11 @@ public class Score : MonoBehaviour
     //テキストを書き換える
     TextMeshProUGUI text;
     //スコア保存
-    static private int score, highScore = 0;
+    private static int score, highScore = 0;
     //シーン内のボールの数保存
     public static int ballNum;
 
-    private void Awake()
+    void Awake()
     {
         //Awakeでボールの数初期化
         ballNum = 0;
@@ -34,6 +34,7 @@ public class Score : MonoBehaviour
             + "\nHighScore: " + highScore.ToString();
     }
 
+    //スコアsetter
     static public void ScoreAdder()
     {
         score++;
@@ -46,8 +47,8 @@ public class Score : MonoBehaviour
     //ゲームオーバーになる
     static public void GameOver()
     {
-        //Debug.Log("GameOver");
-        SceneManager.LoadScene("Main");
+        //とりあえずシーン再読み込み
         if (highScore < score) highScore = score;
+        SceneManager.LoadScene("Main");
     }
 }

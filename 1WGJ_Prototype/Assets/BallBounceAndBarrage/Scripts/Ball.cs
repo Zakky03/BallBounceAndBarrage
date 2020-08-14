@@ -29,11 +29,12 @@ public class Ball : MonoBehaviour
     [SerializeField]
     public BALL_STATE ballState;
 
-    //[SerializeField]
-    //bool isFirstBall = false;
-
-    //ボールの状態の色
-    Color[] ballColor = new Color[(int)BALL_STATE.RED + 1];
+    //ボールの状態の色(オブジェクトごとに持つのは無駄なのでstatic)
+    static Color[] ballColor = {
+        new Color(60, 183, 72, 255) / 255,  //GREEN
+        new Color(39, 104, 135, 255) / 255, //BLUE
+        new Color(248, 110, 112, 255) / 255 //RED
+    };
 
     public bool isRinging { private set; get; }
 
@@ -46,13 +47,6 @@ public class Ball : MonoBehaviour
         spRenderer = GetComponent<SpriteRenderer>();
         rigidbody2d = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
-
-        //if (isFirstBall) rigidbody2d.velocity = Vector2.up * 10f;
-
-        //色を定義(staticで持った方がいいかも)
-        ballColor[(int)BALL_STATE.GREEN] = new Color(60, 183, 72, 255) / 255;
-        ballColor[(int)BALL_STATE.BLUE] = new Color(39, 104, 135, 255) / 255;
-        ballColor[(int)BALL_STATE.RED] = new Color(248, 110, 112, 255) / 255;
 
         //最初はBLUE状態から
         StateAndColorSetter(BALL_STATE.BLUE);
@@ -80,7 +74,6 @@ public class Ball : MonoBehaviour
             {
                 case BALL_STATE.GREEN:
                     StateAndColorSetter(BALL_STATE.RED);
-                    //Score.scoreAdder(-1);
                     break;
 
                 case BALL_STATE.BLUE:
@@ -107,16 +100,19 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
+        //ぶつかったボールが既に鳴ってたらやらない
         if (col.gameObject.tag == "Ball" && col.gameObject.GetComponent<Ball>().isRinging) return;
         else
         {
-            //Debug.Log("Ringed");
+            //ボールの二つ分音がならないためにやってる
             isRinging = true;
             audioSource.Play();
         }
+
         //プレイヤー以外のぶつかりは無視
         if (col.gameObject.tag != "Player") return;
 
+        //OnCollisionEnter2Dの順番よくわからんからこれで色保持してる
         prevBallState = ballState;
         //ボールの色によって運命が決まる
         switch (ballState)
