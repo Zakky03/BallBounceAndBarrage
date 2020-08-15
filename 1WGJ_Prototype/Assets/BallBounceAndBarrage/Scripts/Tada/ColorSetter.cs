@@ -19,7 +19,7 @@ public class ColorSetter : MonoBehaviour
 
     private void Start()
     {
-        CustomColorTheme.ChangeTheme(initialColorIndex);
+        CustomColorTheme.ChangeTheme(3);// initialColorIndex);
         SetColors(CustomColorTheme.GetColors());
     }
 

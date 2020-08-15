@@ -58,7 +58,7 @@ public class Score : MonoBehaviour
         if (highScore < score) highScore = score;
 
         // スコア登録 by tada
-        naichilab.RankingLoader.Instance.SendScoreAndShowRanking(score);
+        if(naichilab.RankingLoader.Instance != null) naichilab.RankingLoader.Instance.SendScoreAndShowRanking(score);
         // SceneManager.LoadScene("Main");
     }
 }

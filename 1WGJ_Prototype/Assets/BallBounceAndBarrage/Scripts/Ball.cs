@@ -17,6 +17,10 @@ public class Ball : MonoBehaviour
     [SerializeField]
     GameObject ball;
 
+    // エフェクト
+    [SerializeField]
+    private EffectColor eff;
+
     //ボールの状態
     [SerializeField]
     public enum BALL_STATE
@@ -47,12 +51,16 @@ public class Ball : MonoBehaviour
         spRenderer = GetComponent<SpriteRenderer>();
         rigidbody2d = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+    }
 
-        ////最初はBLUE状態から
-        //StateAndColorSetter(BALL_STATE.BLUE);
+    // ボールを生成するときに呼び出す by tada
+    public void Init()
+    {
+        //最初はBLUE状態から
+        StateAndColorSetter(BALL_STATE.BLUE);
 
-        ////シーンのボールの個数増やす
-        //Score.ballNum++;
+        //シーンのボールの個数増やす
+        Score.ballNum++;
     }
 
     // Update is called once per frame
@@ -61,16 +69,6 @@ public class Ball : MonoBehaviour
         isRinging = false;
         //上下に行きすぎたら位置をスクロールする
         BallScroll();
-    }
-
-    // by tada
-    public void Init()
-    {
-        //最初はBLUE状態から
-        StateAndColorSetter(BALL_STATE.BLUE);
-
-        //シーンのボールの個数増やす
-        Score.ballNum++;
     }
 
     void BallScroll()
@@ -136,6 +134,8 @@ public class Ball : MonoBehaviour
                 newBall.GetComponent<Rigidbody2D>().velocity =
                     Quaternion.Euler(0, 0, Random.Range(-30f, 30f)) * rigidbody2d.velocity.normalized * 10f;
                 StateAndColorSetter(BALL_STATE.BLUE);
+                // 2つの玉からエフェクトを出す
+                PlayEffect(); newBall.PlayEffect();
                 break;
 
             case BALL_STATE.RED:
@@ -151,6 +151,12 @@ public class Ball : MonoBehaviour
         ballState = bState;
         //spRenderer.color = ballColor[(int)bState];
         spRenderer.color = CustomColorTheme.GetColors()[(int)bState];
+    }
+
+    // by tada
+    public void PlayEffect()
+    {
+        if (eff != null) eff.Play(ballState);
     }
 
     void OnDisable()

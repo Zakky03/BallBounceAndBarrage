@@ -20,6 +20,9 @@ public enum eColorState
 [System.Serializable]
 public class ColorTheme
 {
+    [SerializeField]
+    private bool isRandomColor = false;
+
     [field: SerializeField]
     public Color BallColorGreen { private set; get; } // GREEN
     [field: SerializeField]
@@ -27,11 +30,11 @@ public class ColorTheme
     [field: SerializeField]
     public Color BallColorRed { private set; get; }  // RED
 
-    [field:SerializeField]
+    [field: SerializeField]
     public Color RodColor { private set; get; } // 棒
-    [field:SerializeField]
+    [field: SerializeField]
     public Color FieldColor { private set; get; } // 背景
-    [field:SerializeField]
+    [field: SerializeField]
     public Color WallColor { private set; get; } // 壁
 
     [field: SerializeField]
@@ -55,12 +58,26 @@ public class ColorTheme
             return new Color(1.0f, 0.0f, 1.0f);
         }
     }
+
+    public void Init()
+    {
+        if (isRandomColor)
+        {
+            BallColorGreen = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
+            BallColorBlue = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
+            BallColorRed = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
+            RodColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
+            FieldColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
+            WallColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
+            TextColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
+        }
+    }
 }
 
 public class CustomColorTheme : TadaLib.SingletonMonoBehaviour<CustomColorTheme>
 {
     // 色のテーマ
-    [field:SerializeField]
+    [field: SerializeField]
     public List<ColorTheme> themes { private set; get; }
 
     // 現在選択中のテーマ
@@ -68,11 +85,10 @@ public class CustomColorTheme : TadaLib.SingletonMonoBehaviour<CustomColorTheme>
 
     protected override void Awake()
     {
-        UnityEngine.Assertions.Assert.IsFalse(themes.Count == 0);
-
         base.Awake();
 
-        // 初期のテーマをデフォルトで選択
+        UnityEngine.Assertions.Assert.IsFalse(themes.Count == 0);
+        foreach (var theme in themes) theme.Init();
         curTheme = themes[0];
     }
 
@@ -85,5 +101,6 @@ public class CustomColorTheme : TadaLib.SingletonMonoBehaviour<CustomColorTheme>
     {
         UnityEngine.Assertions.Assert.IsFalse(Instance.themes.Count <= index);
         Instance.curTheme = Instance.themes[index];
+        Instance.curTheme.Init();
     }
 }
