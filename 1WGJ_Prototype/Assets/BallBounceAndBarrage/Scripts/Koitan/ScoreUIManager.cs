@@ -157,6 +157,8 @@ public class ScoreUIManager : MonoBehaviour
         scoreText.color = theme.TextColor;
         unlockedText.color = theme.TextColor;
         bow.color = theme.BallColorBlue;
-        backBow.color = theme.BallColorBlue;
+        Color tmp = theme.BallColorBlue;
+        tmp.a = 0.25f;
+        backBow.color = tmp;
     }
 }
