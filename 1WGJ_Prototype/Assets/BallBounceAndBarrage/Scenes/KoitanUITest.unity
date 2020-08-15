@@ -851,6 +851,8 @@ MonoBehaviour:
   fieldIm: {fileID: 1679292801}
   colorText: {fileID: 192759774}
   leftText: {fileID: 1229772091}
+  RightButton: {fileID: 1309243554}
+  LeftButton: {fileID: 1977760841}
 --- !u!4 &529868768
 Transform:
   m_ObjectHideFlags: 0

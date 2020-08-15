@@ -38,6 +38,10 @@ public class ScoreUIManager : MonoBehaviour
     TextMeshProUGUI colorText;
     [SerializeField]
     TextMeshProUGUI leftText;
+    [SerializeField]
+    Image RightButton;
+    [SerializeField]
+    Image LeftButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -82,6 +86,7 @@ public class ScoreUIManager : MonoBehaviour
             .OnStart(() =>
             {
                 isChanging = true;
+                RightButton.rectTransform.DOPunchScale(Vector3.one * 0.1f, 0.2f);
             })
             .AppendCallback(() =>
             {
@@ -114,6 +119,7 @@ public class ScoreUIManager : MonoBehaviour
             .OnStart(() =>
             {
                 isChanging = true;
+                LeftButton.rectTransform.DOPunchScale(Vector3.one * 0.1f, 0.2f);
             })
             .AppendCallback(() =>
             {
