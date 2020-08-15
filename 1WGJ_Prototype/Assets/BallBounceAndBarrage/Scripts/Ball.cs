@@ -149,7 +149,8 @@ public class Ball : MonoBehaviour
     {
         //ボールの色と状態を代入する
         ballState = bState;
-        spRenderer.color = ballColor[(int)bState];
+        //spRenderer.color = ballColor[(int)bState];
+        spRenderer.color = CustomColorTheme.GetColors()[(int)bState];
     }
 
     void OnDisable()
