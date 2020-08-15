@@ -300,7 +300,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Color 1
+  m_text: Color 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 336d50f3f95934fa2876ad8f81b398e8, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: f378b6c11dff047e19ce2d86051a3c45, type: 2}
@@ -770,6 +770,11 @@ MonoBehaviour:
   stackScore: 200
   unlockedObj: {fileID: 406683937}
   colorThemeUi: {fileID: 1679292803}
+  redIm: {fileID: 1303582063}
+  blueIm: {fileID: 949256226}
+  greenIm: {fileID: 681551277}
+  fieldIm: {fileID: 1679292801}
+  colorText: {fileID: 192759774}
 --- !u!4 &529868768
 Transform:
   m_ObjectHideFlags: 0

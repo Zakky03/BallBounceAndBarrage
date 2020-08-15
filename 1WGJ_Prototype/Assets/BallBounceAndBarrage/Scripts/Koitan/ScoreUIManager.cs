@@ -24,13 +24,24 @@ public class ScoreUIManager : MonoBehaviour
     CanvasGroup colorThemeUi;
     bool isChanging;
     float fadeTime = 0.1f;
-    CustomColorTheme theme;
+    ColorTheme theme;
     int themeIndex = 0;
+    [SerializeField]
+    Image redIm;
+    [SerializeField]
+    Image blueIm;
+    [SerializeField]
+    Image greenIm;
+    [SerializeField]
+    Image fieldIm;
+    [SerializeField]
+    TextMeshProUGUI colorText;
     // Start is called before the first frame update
     void Start()
     {
         //初期化
         unlockedObj.SetActive(false);
+        UpdateColorUi();
         //text表示    
         scoreText.text = debugScore + Environment.NewLine + stackScore;
         //バー増やす
@@ -63,7 +74,7 @@ public class ScoreUIManager : MonoBehaviour
 
     public void ChangeGroupNext()
     {
-        if(!isChanging)
+        if (!isChanging)
         {
             Sequence seq = DOTween.Sequence()
             .OnStart(() =>
@@ -78,6 +89,9 @@ public class ScoreUIManager : MonoBehaviour
             .AppendInterval(fadeTime)
             .AppendCallback(() =>
             {
+                themeIndex++;
+                CustomColorTheme.ChangeTheme(themeIndex);
+                UpdateColorUi();
                 colorThemeUi.transform.DOLocalMoveX(40f, 0).SetRelative();
                 colorThemeUi.DOFade(1, fadeTime).SetEase(Ease.OutSine);
                 colorThemeUi.transform.DOLocalMoveX(-20, fadeTime).SetRelative().SetEase(Ease.OutSine);
@@ -92,7 +106,7 @@ public class ScoreUIManager : MonoBehaviour
 
     public void ChangeGroupPrev()
     {
-        if(!isChanging)
+        if (!isChanging)
         {
             Sequence seq = DOTween.Sequence()
             .OnStart(() =>
@@ -107,6 +121,9 @@ public class ScoreUIManager : MonoBehaviour
             .AppendInterval(fadeTime)
             .AppendCallback(() =>
             {
+                themeIndex--;
+                CustomColorTheme.ChangeTheme(themeIndex);
+                UpdateColorUi();
                 colorThemeUi.transform.DOLocalMoveX(-40f, 0).SetRelative();
                 colorThemeUi.DOFade(1, fadeTime).SetEase(Ease.OutSine);
                 colorThemeUi.transform.DOLocalMoveX(20, fadeTime).SetRelative().SetEase(Ease.OutSine);
@@ -116,6 +133,17 @@ public class ScoreUIManager : MonoBehaviour
             {
                 isChanging = false;
             });
-        }        
+        }
+    }
+
+    public void UpdateColorUi()
+    {
+        theme = CustomColorTheme.GetColors();
+        redIm.color = theme.BallColorRed;
+        blueIm.color = theme.BallColorBlue;
+        greenIm.color = theme.BallColorGreen;
+        fieldIm.color = theme.FieldColor;
+        colorText.color = theme.TextColor;
+        colorText.text = "Color " + themeIndex;
     }
 }
