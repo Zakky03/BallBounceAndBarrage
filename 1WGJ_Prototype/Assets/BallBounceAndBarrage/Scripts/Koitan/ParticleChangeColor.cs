@@ -18,5 +18,6 @@ public class ParticleChangeColor : MonoBehaviour
     void Update()
     {
         particle.startColor = color;
+        
     }
 }
