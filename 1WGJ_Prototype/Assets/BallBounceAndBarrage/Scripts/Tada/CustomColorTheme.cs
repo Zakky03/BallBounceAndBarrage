@@ -97,6 +97,11 @@ public class CustomColorTheme : TadaLib.SingletonMonoBehaviour<CustomColorTheme>
         return Instance.curTheme;
     }
 
+    public static int GetThemeNum()
+    {
+        return Instance.themes.Count;
+    }
+
     public static void ChangeTheme(int index)
     {
         UnityEngine.Assertions.Assert.IsFalse(Instance.themes.Count <= index);
