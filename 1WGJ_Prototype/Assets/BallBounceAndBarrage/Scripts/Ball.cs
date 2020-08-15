@@ -81,10 +81,14 @@ public class Ball : MonoBehaviour
             switch (ballState)
             {
                 case BALL_STATE.GREEN:
+                    // エフェクトを出す
+                    EffectFactory.Play(transform.position, (int)BALL_STATE.RED);
                     StateAndColorSetter(BALL_STATE.RED);
                     break;
 
                 case BALL_STATE.BLUE:
+                    // エフェクトを出す
+                    EffectFactory.Play(transform.position, (int)BALL_STATE.GREEN);
                     StateAndColorSetter(BALL_STATE.GREEN);
                     break;
 
