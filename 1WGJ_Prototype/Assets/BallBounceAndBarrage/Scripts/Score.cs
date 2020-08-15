@@ -53,12 +53,13 @@ public class Score : MonoBehaviour
         if (finished) return;
 
         finished = true;
-        
-        //とりあえずシーン再読み込み
-        if (highScore < score) highScore = score;
+
+        //if (highScore < score) highScore = score;
+        highScore = Mathf.Max(highScore, score);
 
         // スコア登録 by tada
         if(naichilab.RankingLoader.Instance != null) naichilab.RankingLoader.Instance.SendScoreAndShowRanking(score);
+        //とりあえずシーン再読み込み
         // SceneManager.LoadScene("Main");
     }
 }
