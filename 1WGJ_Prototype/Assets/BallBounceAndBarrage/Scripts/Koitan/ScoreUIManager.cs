@@ -9,9 +9,9 @@ using System;
 public class ScoreUIManager : MonoBehaviour
 {
     [SerializeField]
-    RectTransform rect;
+    Image bow;
     [SerializeField]
-    Transform tfm;
+    Image backBow;
     [SerializeField]
     TextMeshProUGUI scoreText;
     [SerializeField]
@@ -19,7 +19,7 @@ public class ScoreUIManager : MonoBehaviour
     [SerializeField]
     int stackScore;
     [SerializeField]
-    GameObject unlockedObj;
+    TextMeshProUGUI unlockedText;
     [SerializeField]
     CanvasGroup colorThemeUi;
     bool isChanging;
@@ -36,11 +36,13 @@ public class ScoreUIManager : MonoBehaviour
     Image fieldIm;
     [SerializeField]
     TextMeshProUGUI colorText;
+    [SerializeField]
+    TextMeshProUGUI leftText;
     // Start is called before the first frame update
     void Start()
     {
         //初期化
-        unlockedObj.SetActive(false);
+        unlockedText.gameObject.SetActive(false);
         UpdateColorUi();
         //text表示    
         scoreText.text = debugScore + Environment.NewLine + stackScore;
@@ -55,8 +57,8 @@ public class ScoreUIManager : MonoBehaviour
             .SetEase(Ease.InExpo)
             .OnComplete(() =>
             {
-                tfm.DOPunchPosition(Vector3.right * 10f, 0.5f);
-                unlockedObj.SetActive(true);
+                backBow.rectTransform.DOPunchPosition(Vector3.right * 10f, 0.5f);
+                unlockedText.gameObject.SetActive(true);
             }
             );
     }
@@ -67,9 +69,9 @@ public class ScoreUIManager : MonoBehaviour
         //text更新
         scoreText.text = debugScore + Environment.NewLine + stackScore;
         //バー更新  
-        Vector2 tmp = rect.sizeDelta;
+        Vector2 tmp = bow.rectTransform.sizeDelta;
         tmp.x = stackScore;
-        rect.sizeDelta = tmp;
+        bow.rectTransform.sizeDelta = tmp;
     }
 
     public void ChangeGroupNext()
@@ -89,7 +91,7 @@ public class ScoreUIManager : MonoBehaviour
             .AppendInterval(fadeTime)
             .AppendCallback(() =>
             {
-                themeIndex++;
+                themeIndex = (themeIndex + 1) % 5;
                 CustomColorTheme.ChangeTheme(themeIndex);
                 UpdateColorUi();
                 colorThemeUi.transform.DOLocalMoveX(40f, 0).SetRelative();
@@ -121,7 +123,7 @@ public class ScoreUIManager : MonoBehaviour
             .AppendInterval(fadeTime)
             .AppendCallback(() =>
             {
-                themeIndex--;
+                themeIndex = (themeIndex - 1 + 5) % 5;
                 CustomColorTheme.ChangeTheme(themeIndex);
                 UpdateColorUi();
                 colorThemeUi.transform.DOLocalMoveX(-40f, 0).SetRelative();
@@ -145,5 +147,10 @@ public class ScoreUIManager : MonoBehaviour
         fieldIm.color = theme.FieldColor;
         colorText.color = theme.TextColor;
         colorText.text = "Color " + themeIndex;
+        leftText.color = theme.TextColor;
+        scoreText.color = theme.TextColor;
+        unlockedText.color = theme.TextColor;
+        bow.color = theme.BallColorBlue;
+        backBow.color = theme.BallColorBlue;
     }
 }
