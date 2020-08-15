@@ -18,8 +18,17 @@ public class BallFactory : MonoBehaviour
         pool = GetComponent<ObjectPool>();
     }
 
+    private void Start()
+    {
+        Ball ball = pool.GetInstance().GetComponent<Ball>();
+        ball.Init();
+        ball.transform.position = new Vector3(0f, -3f, 0f);
+    }
+
     public static Ball GetInstance()
     {
-        return pool.GetInstance().GetComponent<Ball>();
+        Ball ret = pool.GetInstance().GetComponent<Ball>();
+        ret.Init();
+        return ret;
     }
 }
