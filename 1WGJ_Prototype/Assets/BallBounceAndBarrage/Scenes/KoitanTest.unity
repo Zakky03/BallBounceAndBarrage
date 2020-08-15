@@ -185,6 +185,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &706587189 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2170787917197175816, guid: c2f689f17df40514c9a976fbe3dd6b77, type: 3}
+  m_PrefabInstance: {fileID: 2170787916324165856}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &706587193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706587189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6e38f549699eda44a8a0bc541554f5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &1977825419
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,6 +552,26 @@ PrefabInstance:
     - target: {fileID: 2170787917197175816, guid: c2f689f17df40514c9a976fbe3dd6b77, type: 3}
       propertyPath: m_Name
       value: CircleEff
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170787917197175818, guid: c2f689f17df40514c9a976fbe3dd6b77, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170787917197175818, guid: c2f689f17df40514c9a976fbe3dd6b77, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170787917197175818, guid: c2f689f17df40514c9a976fbe3dd6b77, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 52428
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170787917197175818, guid: c2f689f17df40514c9a976fbe3dd6b77, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170787917197175818, guid: c2f689f17df40514c9a976fbe3dd6b77, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.m_NumAlphaKeys
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2170787917197175819, guid: c2f689f17df40514c9a976fbe3dd6b77, type: 3}
       propertyPath: m_LocalPosition.x
