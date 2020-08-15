@@ -13,10 +13,13 @@ public class Score : MonoBehaviour
     //シーン内のボールの数保存
     public static int ballNum;
 
+    private static bool finished;
+
     void Awake()
     {
         //Awakeでボールの数初期化
         ballNum = 0;
+        finished = false;
     }
     // Start is called before the first frame update
     void Start()
@@ -47,8 +50,15 @@ public class Score : MonoBehaviour
     //ゲームオーバーになる
     static public void GameOver()
     {
+        if (finished) return;
+
+        finished = true;
+        
         //とりあえずシーン再読み込み
         if (highScore < score) highScore = score;
-        SceneManager.LoadScene("Main");
+
+        // スコア登録 by tada
+        naichilab.RankingLoader.Instance.SendScoreAndShowRanking(score);
+        // SceneManager.LoadScene("Main");
     }
 }

@@ -41,18 +41,18 @@ public class Ball : MonoBehaviour
     public BALL_STATE prevBallState;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         cirCol2D = GetComponent<CircleCollider2D>();
         spRenderer = GetComponent<SpriteRenderer>();
         rigidbody2d = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
 
-        //最初はBLUE状態から
-        StateAndColorSetter(BALL_STATE.BLUE);
+        ////最初はBLUE状態から
+        //StateAndColorSetter(BALL_STATE.BLUE);
 
-        //シーンのボールの個数増やす
-        Score.ballNum++;
+        ////シーンのボールの個数増やす
+        //Score.ballNum++;
     }
 
     // Update is called once per frame
@@ -61,6 +61,16 @@ public class Ball : MonoBehaviour
         isRinging = false;
         //上下に行きすぎたら位置をスクロールする
         BallScroll();
+    }
+
+    // by tada
+    public void OnEnable()
+    {
+        //最初はBLUE状態から
+        StateAndColorSetter(BALL_STATE.BLUE);
+
+        //シーンのボールの個数増やす
+        Score.ballNum++;
     }
 
     void BallScroll()
@@ -81,7 +91,8 @@ public class Ball : MonoBehaviour
                     break;
 
                 case BALL_STATE.RED:
-                    Destroy(gameObject);
+                    // Destroy(gameObject);
+                    gameObject.SetActive(false);
                     break;
             }
 
@@ -119,7 +130,9 @@ public class Ball : MonoBehaviour
         {
             case BALL_STATE.GREEN:
                 Score.ScoreAdder();
-                GameObject newBall = Instantiate(ball);
+                //GameObject newBall = Instantiate(ball);
+                Ball newBall = BallFactory.GetInstance(); // by tada
+                newBall.transform.position = this.transform.position;
                 newBall.GetComponent<Rigidbody2D>().velocity =
                     Quaternion.Euler(0, 0, Random.Range(-30f, 30f)) * rigidbody2d.velocity.normalized * 10f;
                 StateAndColorSetter(BALL_STATE.BLUE);
@@ -139,7 +152,7 @@ public class Ball : MonoBehaviour
         spRenderer.color = ballColor[(int)bState];
     }
 
-    void OnDestroy()
+    void OnDisable()
     {
         //死んだときボールの数減らす
         Score.ballNum--;
