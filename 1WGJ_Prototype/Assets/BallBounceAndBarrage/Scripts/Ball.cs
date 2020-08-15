@@ -81,14 +81,14 @@ public class Ball : MonoBehaviour
             switch (ballState)
             {
                 case BALL_STATE.GREEN:
-                    // エフェクトを出す
-                    EffectFactory.Play(transform.position, (int)BALL_STATE.RED);
+                    //// エフェクトを出す
+                    //EffectFactory.Play(transform.position, (int)BALL_STATE.RED);
                     StateAndColorSetter(BALL_STATE.RED);
                     break;
 
                 case BALL_STATE.BLUE:
-                    // エフェクトを出す
-                    EffectFactory.Play(transform.position, (int)BALL_STATE.GREEN);
+                    //// エフェクトを出す
+                    //EffectFactory.Play(transform.position, (int)BALL_STATE.GREEN);
                     StateAndColorSetter(BALL_STATE.GREEN);
                     break;
 
@@ -101,6 +101,8 @@ public class Ball : MonoBehaviour
             Vector2 vec = transform.position;
             vec.y += tmp * 2;
             transform.position = vec;
+            // エフェクトを出す
+            EffectFactory.Play(transform.position - new Vector3(0f, 0.4f, 0f), (int)ballState);
         }
         //あがった時は変化なし
         while (transform.position.y >= tmp)
