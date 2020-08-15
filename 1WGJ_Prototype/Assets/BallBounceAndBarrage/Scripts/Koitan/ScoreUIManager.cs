@@ -20,6 +20,12 @@ public class ScoreUIManager : MonoBehaviour
     int stackScore;
     [SerializeField]
     GameObject unlockedObj;
+    [SerializeField]
+    CanvasGroup colorThemeUi;
+    bool isChanging;
+    float fadeTime = 0.1f;
+    CustomColorTheme theme;
+    int themeIndex = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,5 +59,63 @@ public class ScoreUIManager : MonoBehaviour
         Vector2 tmp = rect.sizeDelta;
         tmp.x = stackScore;
         rect.sizeDelta = tmp;
+    }
+
+    public void ChangeGroupNext()
+    {
+        if(!isChanging)
+        {
+            Sequence seq = DOTween.Sequence()
+            .OnStart(() =>
+            {
+                isChanging = true;
+            })
+            .AppendCallback(() =>
+            {
+                colorThemeUi.DOFade(0, fadeTime).SetEase(Ease.InSine);
+                colorThemeUi.transform.DOLocalMoveX(-20, fadeTime).SetRelative().SetEase(Ease.InSine);
+            })
+            .AppendInterval(fadeTime)
+            .AppendCallback(() =>
+            {
+                colorThemeUi.transform.DOLocalMoveX(40f, 0).SetRelative();
+                colorThemeUi.DOFade(1, fadeTime).SetEase(Ease.OutSine);
+                colorThemeUi.transform.DOLocalMoveX(-20, fadeTime).SetRelative().SetEase(Ease.OutSine);
+            })
+            .AppendInterval(fadeTime)
+            .OnComplete(() =>
+            {
+                isChanging = false;
+            });
+        }
+    }
+
+    public void ChangeGroupPrev()
+    {
+        if(!isChanging)
+        {
+            Sequence seq = DOTween.Sequence()
+            .OnStart(() =>
+            {
+                isChanging = true;
+            })
+            .AppendCallback(() =>
+            {
+                colorThemeUi.DOFade(0, fadeTime).SetEase(Ease.InSine);
+                colorThemeUi.transform.DOLocalMoveX(20, fadeTime).SetRelative().SetEase(Ease.InSine);
+            })
+            .AppendInterval(fadeTime)
+            .AppendCallback(() =>
+            {
+                colorThemeUi.transform.DOLocalMoveX(-40f, 0).SetRelative();
+                colorThemeUi.DOFade(1, fadeTime).SetEase(Ease.OutSine);
+                colorThemeUi.transform.DOLocalMoveX(20, fadeTime).SetRelative().SetEase(Ease.OutSine);
+            })
+            .AppendInterval(fadeTime)
+            .OnComplete(() =>
+            {
+                isChanging = false;
+            });
+        }        
     }
 }
