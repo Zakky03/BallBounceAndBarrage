@@ -29,12 +29,12 @@ public class Ball : MonoBehaviour
     [SerializeField]
     public BALL_STATE ballState;
 
-    //ボールの状態の色(オブジェクトごとに持つのは無駄なのでstatic)
-    static Color[] ballColor = {
-        new Color(60, 183, 72, 255) / 255,  //GREEN
-        new Color(39, 104, 135, 255) / 255, //BLUE
-        new Color(248, 110, 112, 255) / 255 //RED
-    };
+    ////ボールの状態の色(オブジェクトごとに持つのは無駄なのでstatic)
+    //static Color[] ballColor = {
+    //    new Color(60, 183, 72, 255) / 255,  //GREEN
+    //    new Color(39, 104, 135, 255) / 255, //BLUE
+    //    new Color(248, 110, 112, 255) / 255 //RED
+    //};
 
     public bool isRinging { private set; get; }
 
@@ -64,7 +64,7 @@ public class Ball : MonoBehaviour
     }
 
     // by tada
-    public void OnEnable()
+    public void Init()
     {
         //最初はBLUE状態から
         StateAndColorSetter(BALL_STATE.BLUE);

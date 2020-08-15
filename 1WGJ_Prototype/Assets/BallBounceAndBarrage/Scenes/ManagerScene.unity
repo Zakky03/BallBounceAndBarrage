@@ -160,20 +160,20 @@ MonoBehaviour:
     <FieldColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
     <WallColor>k__BackingField: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
     <TextColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
-  - <BallColorGreen>k__BackingField: {r: 0.921827, g: 0.25943398, b: 1, a: 1}
+  - <BallColorGreen>k__BackingField: {r: 0.23529412, g: 0.7176471, b: 0.28235295, a: 1}
+    <BallColorBlue>k__BackingField: {r: 0.15294118, g: 0.40784314, b: 0.5294118, a: 1}
+    <BallColorRed>k__BackingField: {r: 0.972549, g: 0.43137255, b: 0.4392157, a: 1}
+    <RodColor>k__BackingField: {r: 0.15294118, g: 0.40784314, b: 0.5294118, a: 1}
+    <FieldColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+    <WallColor>k__BackingField: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
+    <TextColor>k__BackingField: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 1}
+  - <BallColorGreen>k__BackingField: {r: 0, g: 1, b: 0.13390994, a: 1}
     <BallColorBlue>k__BackingField: {r: 1, g: 0.81960785, b: 0, a: 1}
-    <BallColorRed>k__BackingField: {r: 1, g: 0.19862808, b: 0, a: 1}
+    <BallColorRed>k__BackingField: {r: 1, g: 0, b: 0.11425209, a: 1}
     <RodColor>k__BackingField: {r: 1, g: 0.81960785, b: 0, a: 1}
-    <FieldColor>k__BackingField: {r: 0.5330188, g: 0.95488226, b: 1, a: 1}
-    <WallColor>k__BackingField: {r: 0.26326787, g: 0.5754717, b: 0, a: 1}
-    <TextColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-  - <BallColorGreen>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
-    <BallColorBlue>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
-    <BallColorRed>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
-    <RodColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
-    <FieldColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
-    <WallColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
-    <TextColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+    <FieldColor>k__BackingField: {r: 0, g: 0.017874861, b: 0.2264151, a: 1}
+    <WallColor>k__BackingField: {r: 0, g: 0.36647463, b: 1, a: 1}
+    <TextColor>k__BackingField: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 1}
 --- !u!4 &789860015
 Transform:
   m_ObjectHideFlags: 0

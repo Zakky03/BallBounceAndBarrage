@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 
 //ボールの状態
-public enum BALL_STATE
+public enum eColorState
 {
     GREEN = 0,
     BLUE = 1,
@@ -73,7 +73,7 @@ public class CustomColorTheme : TadaLib.SingletonMonoBehaviour<CustomColorTheme>
         base.Awake();
 
         // 初期のテーマをデフォルトで選択
-        curTheme = themes[1];
+        curTheme = themes[0];
     }
 
     public static ColorTheme GetColors()
@@ -81,9 +81,9 @@ public class CustomColorTheme : TadaLib.SingletonMonoBehaviour<CustomColorTheme>
         return Instance.curTheme;
     }
 
-    public void ChangeTheme(int index)
+    public static void ChangeTheme(int index)
     {
-        UnityEngine.Assertions.Assert.IsFalse(themes.Count >= index);
-        curTheme = themes[index];
+        UnityEngine.Assertions.Assert.IsFalse(Instance.themes.Count <= index);
+        Instance.curTheme = Instance.themes[index];
     }
 }
