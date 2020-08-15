@@ -60,7 +60,11 @@ public class Bow : MonoBehaviour
     void BowScaler()
     {
         bowScale -= 0.1f * Time.deltaTime;
-        if (bowScale <= 0f) Score.GameOver();
+        if (bowScale <= 0f)
+        {
+            Score.GameOver();
+            return;
+        }
         Vector2 vec = iniScale;
         vec.x = bowScale * iniScale.x;
         transform.localScale = vec;
