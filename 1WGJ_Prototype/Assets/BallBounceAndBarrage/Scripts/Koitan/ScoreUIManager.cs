@@ -15,6 +15,8 @@ public class ScoreUIManager : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI scoreText;
     [SerializeField]
+    private Image scoreBackBoard;
+    [SerializeField]
     int debugScore;
     [SerializeField]
     int stackScore;
@@ -57,6 +59,8 @@ public class ScoreUIManager : MonoBehaviour
     Image LeftLock;
     [SerializeField]
     Image RightLock;
+    [SerializeField]
+    private Image ReChangeButton;
 
     Sequence scoreSeq;
 
@@ -69,7 +73,7 @@ public class ScoreUIManager : MonoBehaviour
         UpdateColorUi();
         left = Score.score;
         stackScore = PlayerPrefs.GetInt("Score", 0);
-        //themeIndex = CustomColorTheme.GetThemeNum();
+        themeIndex = CustomColorTheme.GetThemeIndex();
         PlayerPrefs.SetInt("Score", stackScore + left);
         //ターゲットスコアの計算
         for (int i = 0; i < targetScore.Length; i++)
@@ -93,6 +97,9 @@ public class ScoreUIManager : MonoBehaviour
             leftTargetScore.text = targetScore[targetIndex - 2].ToString();
             rightTargetScore.text = targetScore[targetIndex - 1].ToString();
         }
+
+        // by tada
+        UpdateArrowUI();
     }
 
     // Update is called once per frame
@@ -111,45 +118,6 @@ public class ScoreUIManager : MonoBehaviour
             tmp.x = maxBowSize;
         }
         bow.rectTransform.sizeDelta = tmp;
-        //Lock
-        if (targetIndex < targetScore.Length)
-        {
-            if (themeIndex == targetIndex - 1)
-            {
-                RightLock.gameObject.SetActive(true);
-            }
-            else
-            {
-                RightLock.gameObject.SetActive(false);
-            }
-
-            if (themeIndex == 0)
-            {
-                LeftLock.gameObject.SetActive(true);
-            }
-            else
-            {
-                LeftLock.gameObject.SetActive(false);
-            }
-        }
-        else
-        {
-            RightLock.gameObject.SetActive(false);
-            LeftLock.gameObject.SetActive(false);
-        }
-
-        if (targetIndex == 1)
-        {
-            RightButton.gameObject.SetActive(false);
-            LeftButton.gameObject.SetActive(false);
-            RightLock.gameObject.SetActive(false);
-            LeftLock.gameObject.SetActive(false);
-        }
-        else
-        {
-            RightButton.gameObject.SetActive(true);
-            LeftButton.gameObject.SetActive(true);            
-        }
     }
 
     private void AppendScore(int target, float duration = 1f)
@@ -186,6 +154,8 @@ public class ScoreUIManager : MonoBehaviour
             .AppendCallback(() =>
             {
                 targetIndex++;
+                // 矢印を更新
+                UpdateArrowUI();
                 BowMove();
             });
     }
@@ -232,6 +202,9 @@ public class ScoreUIManager : MonoBehaviour
                 colorThemeUi.transform.DOLocalMoveX(40f, 0).SetRelative();
                 colorThemeUi.DOFade(1, fadeTime).SetEase(Ease.OutSine);
                 colorThemeUi.transform.DOLocalMoveX(-20, fadeTime).SetRelative().SetEase(Ease.OutSine);
+
+                // 矢印を更新
+                UpdateArrowUI();
             })
             .AppendInterval(fadeTime)
             .OnComplete(() =>
@@ -265,6 +238,83 @@ public class ScoreUIManager : MonoBehaviour
                 colorThemeUi.transform.DOLocalMoveX(-40f, 0).SetRelative();
                 colorThemeUi.DOFade(1, fadeTime).SetEase(Ease.OutSine);
                 colorThemeUi.transform.DOLocalMoveX(20, fadeTime).SetRelative().SetEase(Ease.OutSine);
+
+                // 矢印を更新
+                UpdateArrowUI();
+            })
+            .AppendInterval(fadeTime)
+            .OnComplete(() =>
+            {
+                isChanging = false;
+            });
+        }
+    }
+
+    public void UpdateArrowUI()
+    {
+        int themeNum = CustomColorTheme.GetThemeNum();
+
+        // 左のロックはいらない
+        LeftLock.gameObject.SetActive(false);
+        ReChangeButton.gameObject.SetActive(false);
+
+        // 左端
+        if (themeIndex == 0)
+        {
+            // 右の矢印しか表示しない
+            LeftButton.gameObject.SetActive(false);
+            LeftLock.gameObject.SetActive(false);
+
+            RightButton.gameObject.SetActive(true);
+            RightLock.gameObject.SetActive(targetIndex == 1);
+            return;
+        }
+        else if(themeIndex == themeNum - 1) // 右端
+        {
+            // 左の矢印しか表示しない
+            RightButton.gameObject.SetActive(false);
+            RightLock.gameObject.SetActive(false);
+
+            LeftButton.gameObject.SetActive(true);
+            ReChangeButton.gameObject.SetActive(true);
+            return;
+        }
+
+        // そのほか
+        RightButton.gameObject.SetActive(true);
+        LeftButton.gameObject.SetActive(true);
+
+        // 右ロックの有無
+        RightLock.gameObject.SetActive(themeIndex == targetIndex - 1);
+    }
+
+    // 色がランダムな時に再度色を変更するボタン by tada
+    public void OnReChangeColorButtonClicked()
+    {
+        if (!isChanging)
+        {
+            Sequence seq = DOTween.Sequence()
+            .OnStart(() =>
+            {
+                isChanging = true;
+                ReChangeButton.rectTransform.DOPunchScale(Vector3.one * 0.1f, 0.2f);
+            })
+            .AppendCallback(() =>
+            {
+                colorThemeUi.DOFade(0, fadeTime).SetEase(Ease.InSine);
+                colorThemeUi.transform.DOLocalMoveX(-20, fadeTime).SetRelative().SetEase(Ease.InSine);
+            })
+            .AppendInterval(fadeTime)
+            .AppendCallback(() =>
+            {
+                CustomColorTheme.ChangeTheme(themeIndex);
+                UpdateColorUi();
+                colorThemeUi.transform.DOLocalMoveX(40f, 0).SetRelative();
+                colorThemeUi.DOFade(1, fadeTime).SetEase(Ease.OutSine);
+                colorThemeUi.transform.DOLocalMoveX(-20, fadeTime).SetRelative().SetEase(Ease.OutSine);
+
+                // 矢印を更新
+                UpdateArrowUI();
             })
             .AppendInterval(fadeTime)
             .OnComplete(() =>
@@ -280,11 +330,13 @@ public class ScoreUIManager : MonoBehaviour
         redIm.color = theme.BallColorRed;
         blueIm.color = theme.BallColorBlue;
         greenIm.color = theme.BallColorGreen;
-        fieldIm.color = theme.FieldColor;
+        fieldIm.color = theme.FieldColor + new Color(1.0f, 1.0f, 1.0f) * 0.2f;
         colorText.color = theme.TextColor;
         colorText.text = theme.ThemeName;
         leftText.color = theme.TextColor;
         scoreText.color = theme.TextColor;
+        scoreBackBoard.color = theme.WallColor - new Color(0f, 0f, 0f, 0.2f);
+        //scoreBackBoard.color = new Color(1.0f, 1.0f, 1.0f, 1.8f) - theme.TextColor;
         unlockedText.color = theme.TextColor;
         bow.color = theme.BallColorBlue;
         leftTargetScore.color = theme.TextColor;

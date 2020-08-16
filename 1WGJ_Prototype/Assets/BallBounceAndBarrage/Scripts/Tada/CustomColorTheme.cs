@@ -89,6 +89,8 @@ public class CustomColorTheme : TadaLib.SingletonMonoBehaviour<CustomColorTheme>
     // 現在選択中のテーマ
     public ColorTheme curTheme { private set; get; }
 
+    private int curIndex;
+
     public delegate void ChangeColorDel(ColorTheme theme);
 
     private ChangeColorDel del;
@@ -100,6 +102,7 @@ public class CustomColorTheme : TadaLib.SingletonMonoBehaviour<CustomColorTheme>
         UnityEngine.Assertions.Assert.IsFalse(themes.Count == 0);
         foreach (var theme in themes) theme.Init();
         curTheme = themes[initialThemeIndex];
+        curIndex = initialThemeIndex;
     }
 
     public static ColorTheme GetColors()
@@ -112,11 +115,18 @@ public class CustomColorTheme : TadaLib.SingletonMonoBehaviour<CustomColorTheme>
         return Instance.themes.Count;
     }
 
+    public static int GetThemeIndex()
+    {
+        return Instance.curIndex;
+    }
+
     public static void ChangeTheme(int index)
     {
         UnityEngine.Assertions.Assert.IsFalse(Instance.themes.Count <= index);
         Instance.curTheme = Instance.themes[index];
         Instance.curTheme.Init();
+
+        Instance.curIndex = index;
 
         // 登録された色の変更要請メソッドを実行する
         Instance.del(Instance.curTheme);

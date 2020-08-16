@@ -20,5 +20,6 @@ public class TItleManager : MonoBehaviour
     {
 
         yield return new WaitForSeconds(1.0f);
+    
     }
 }
