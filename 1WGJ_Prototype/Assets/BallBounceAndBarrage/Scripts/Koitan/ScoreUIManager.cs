@@ -69,7 +69,7 @@ public class ScoreUIManager : MonoBehaviour
         UpdateColorUi();
         left = Score.score;
         stackScore = PlayerPrefs.GetInt("Score", 0);
-        themeIndex = CustomColorTheme.GetThemeNum();
+        //themeIndex = CustomColorTheme.GetThemeNum();
         PlayerPrefs.SetInt("Score", stackScore + left);
         //ターゲットスコアの計算
         for (int i = 0; i < targetScore.Length; i++)
@@ -136,6 +136,19 @@ public class ScoreUIManager : MonoBehaviour
         {
             RightLock.gameObject.SetActive(false);
             LeftLock.gameObject.SetActive(false);
+        }
+
+        if (targetIndex == 1)
+        {
+            RightButton.gameObject.SetActive(false);
+            LeftButton.gameObject.SetActive(false);
+            RightLock.gameObject.SetActive(false);
+            LeftLock.gameObject.SetActive(false);
+        }
+        else
+        {
+            RightButton.gameObject.SetActive(true);
+            LeftButton.gameObject.SetActive(true);            
         }
     }
 
