@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/BallBounceAndBarrage/Scenes/Main.unity
     guid: bebffdd8caa54554cbde96a53cf5edd8
   - enabled: 1
+    path: Assets/BallBounceAndBarrage/Scenes/ResultScene.unity
+    guid: 38921260ee4f95e4aadfe9d4b6eed2a2
+  - enabled: 1
     path: Assets/naichilab/unity-simple-ranking/Scenes/Ranking.unity
     guid: 152244f5855414ac4a3874f14efa583c
   - enabled: 1
