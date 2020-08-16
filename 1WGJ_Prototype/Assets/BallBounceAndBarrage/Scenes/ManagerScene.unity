@@ -182,7 +182,7 @@ MonoBehaviour:
     <BallColorBlue>k__BackingField: {r: 0.09019608, g: 0.7490196, b: 0.8901961, a: 1}
     <BallColorRed>k__BackingField: {r: 0.1764706, g: 0.09803922, b: 0.14117648, a: 1}
     <RodColor>k__BackingField: {r: 0.09019608, g: 0.7490196, b: 0.8901961, a: 1}
-    <FieldColor>k__BackingField: {r: 0.754717, g: 0.54729635, b: 0.48771805, a: 1}
+    <FieldColor>k__BackingField: {r: 0.4811321, g: 0.4060643, b: 0.38354397, a: 1}
     <WallColor>k__BackingField: {r: 0.14901961, g: 0.44705883, b: 0.67058825, a: 1}
     <TextColor>k__BackingField: {r: 0.7019608, g: 0.92941177, b: 1, a: 1}
   - isRandomColor: 1
