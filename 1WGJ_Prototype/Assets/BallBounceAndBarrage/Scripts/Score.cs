@@ -40,10 +40,12 @@ public class Score : MonoBehaviour
     //スコアsetter
     static public void ScoreAdder()
     {
+        if (Finished) return;
         score++;
     }
     static public void ScoreAdder(int s)
     {
+        if (Finished) return;
         score += s;
     }
 

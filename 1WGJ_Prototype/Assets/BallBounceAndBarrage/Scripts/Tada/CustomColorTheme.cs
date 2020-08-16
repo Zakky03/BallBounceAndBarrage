@@ -20,6 +20,9 @@ public enum eColorState
 [System.Serializable]
 public class ColorTheme
 {
+    [field:SerializeField]
+    public string ThemeName { private set; get; }
+
     [SerializeField]
     private bool isRandomColor = false;
 
