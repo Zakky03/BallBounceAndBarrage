@@ -1489,6 +1489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startAnimator: {fileID: 669371115}
+  titleFrame: {fileID: 1168990268}
 --- !u!4 &1645566957
 Transform:
   m_ObjectHideFlags: 0

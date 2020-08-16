@@ -27,6 +27,7 @@ public class Score : MonoBehaviour
         text = GetComponent<TextMeshProUGUI>();
         //スコア初期化
         score = 0;
+        highScore = PlayerPrefs.GetInt("HighScore", highScore);
     }
 
     // Update is called once per frame
@@ -58,6 +59,7 @@ public class Score : MonoBehaviour
 
         //if (highScore < score) highScore = score;
         highScore = Mathf.Max(highScore, score);
+        PlayerPrefs.SetInt("HighScore", highScore);
 
         // リザルトシーン読み込み
         SceneManager.LoadScene("ResultScene", LoadSceneMode.Additive);

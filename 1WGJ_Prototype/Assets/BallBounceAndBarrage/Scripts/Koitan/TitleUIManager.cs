@@ -7,16 +7,14 @@ public class TitleUIManager : MonoBehaviour
 {
     [SerializeField]
     Animator startAnimator;
+
+    [SerializeField]
+    private UnityEngine.UI.Image titleFrame;
+
     // Start is called before the first frame update
     void Start()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        titleFrame.color = CustomColorTheme.GetColors().FieldColor + new Color(1.0f, 1.0f, 1.0f) * 0.2f;
     }
 
     public void PlayAnim()
