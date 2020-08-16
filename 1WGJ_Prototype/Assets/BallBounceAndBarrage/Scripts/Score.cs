@@ -9,7 +9,7 @@ public class Score : MonoBehaviour
     //テキストを書き換える
     TextMeshProUGUI text;
     //スコア保存
-    private static int score, highScore = 0;
+    public static int score, highScore = 0;
     //シーン内のボールの数保存
     public static int ballNum;
 
@@ -57,9 +57,7 @@ public class Score : MonoBehaviour
         //if (highScore < score) highScore = score;
         highScore = Mathf.Max(highScore, score);
 
-        // スコア登録 by tada
-        if(naichilab.RankingLoader.Instance != null) naichilab.RankingLoader.Instance.SendScoreAndShowRanking(score);
-        //とりあえずシーン再読み込み
-        // SceneManager.LoadScene("Main");
+        // リザルトシーン読み込み
+        SceneManager.LoadScene("ResultScene", LoadSceneMode.Additive);
     }
 }

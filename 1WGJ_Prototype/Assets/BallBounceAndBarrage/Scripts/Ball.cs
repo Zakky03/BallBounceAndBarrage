@@ -98,11 +98,12 @@ public class Ball : MonoBehaviour
                     break;
             }
 
+            if (!gameObject.activeSelf) return;
             Vector2 vec = transform.position;
             vec.y += tmp * 2;
             transform.position = vec;
             // エフェクトを出す
-            EffectFactory.Play(transform.position - new Vector3(0f, 0.4f, 0f), (int)ballState);
+            EffectFactory.Play(transform.position - new Vector3(0f, 0.2f, 0f), (int)ballState);
         }
         //あがった時は変化なし
         while (transform.position.y >= tmp)
