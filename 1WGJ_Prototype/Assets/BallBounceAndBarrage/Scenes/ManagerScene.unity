@@ -189,15 +189,24 @@ MonoBehaviour:
     <FieldColor>k__BackingField: {r: 0.4811321, g: 0.4060643, b: 0.38354397, a: 1}
     <WallColor>k__BackingField: {r: 0.14901961, g: 0.44705883, b: 0.67058825, a: 1}
     <TextColor>k__BackingField: {r: 0.7019608, g: 0.92941177, b: 1, a: 1}
+  - <ThemeName>k__BackingField: See
+    isRandomColor: 0
+    <BallColorGreen>k__BackingField: {r: 0.23529412, g: 0.7176471, b: 0.28235295, a: 1}
+    <BallColorBlue>k__BackingField: {r: 1, g: 0.46666667, b: 0.72156864, a: 1}
+    <BallColorRed>k__BackingField: {r: 1, g: 0.99607843, b: 0.16470589, a: 1}
+    <RodColor>k__BackingField: {r: 1, g: 0.46666667, b: 0.72156864, a: 1}
+    <FieldColor>k__BackingField: {r: 0.23137255, g: 0.4627451, b: 1, a: 1}
+    <WallColor>k__BackingField: {r: 0.7529412, g: 0.47058824, b: 0.25882354, a: 1}
+    <TextColor>k__BackingField: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
   - <ThemeName>k__BackingField: Random
     isRandomColor: 1
-    <BallColorGreen>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <BallColorBlue>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <BallColorRed>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <RodColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <FieldColor>k__BackingField: {r: 0, g: 0.017874861, b: 0.2264151, a: 1}
-    <WallColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <TextColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
+    <BallColorGreen>k__BackingField: {r: 0.40095788, g: 0.97046185, b: 0.8810712, a: 1}
+    <BallColorBlue>k__BackingField: {r: 1, g: 0.46666667, b: 0.72156864, a: 1}
+    <BallColorRed>k__BackingField: {r: 1, g: 0.99607843, b: 0.16470589, a: 1}
+    <RodColor>k__BackingField: {r: 1, g: 0.46666667, b: 0.72156864, a: 1}
+    <FieldColor>k__BackingField: {r: 0.38990945, g: 0.64381194, b: 0.9921758, a: 1}
+    <WallColor>k__BackingField: {r: 0.13165855, g: 0.9469253, b: 0.11077273, a: 1}
+    <TextColor>k__BackingField: {r: 0.071682096, g: 0.638294, b: 0.5317245, a: 1}
   initialThemeIndex: 0
 --- !u!4 &789860015
 Transform:
