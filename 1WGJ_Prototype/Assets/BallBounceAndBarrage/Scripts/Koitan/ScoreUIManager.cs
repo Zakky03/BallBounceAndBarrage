@@ -77,9 +77,15 @@ public class ScoreUIManager : MonoBehaviour
                 break;
             }
         }
-        //text表示    
-        BowMove();
-
+        if (stackScore < targetScore[targetScore.Length - 1])
+        {
+            //text表示    
+            BowMove();
+        }
+        else
+        {
+            targetIndex = targetScore.Length;
+        }
     }
 
     // Update is called once per frame
@@ -89,7 +95,14 @@ public class ScoreUIManager : MonoBehaviour
         scoreText.text = Score.score + Environment.NewLine + stackScore;
         //バー更新  
         Vector2 tmp = bow.rectTransform.sizeDelta;
-        tmp.x = maxBowSize * (stackScore - targetScore[targetIndex - 1]) / (targetScore[targetIndex] - targetScore[targetIndex - 1]);
+        if(targetIndex<targetScore.Length)
+        {
+            tmp.x = maxBowSize * (stackScore - targetScore[targetIndex - 1]) / (targetScore[targetIndex] - targetScore[targetIndex - 1]);
+        }
+        else
+        {
+            tmp.x = maxBowSize;
+        }
         bow.rectTransform.sizeDelta = tmp;
     }
 
@@ -216,7 +229,7 @@ public class ScoreUIManager : MonoBehaviour
     }
 
     public void UpdateColorUi()
-    {        
+    {
         theme = CustomColorTheme.GetColors();
         redIm.color = theme.BallColorRed;
         blueIm.color = theme.BallColorBlue;
