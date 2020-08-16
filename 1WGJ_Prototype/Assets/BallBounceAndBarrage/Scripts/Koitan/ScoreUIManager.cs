@@ -167,7 +167,7 @@ public class ScoreUIManager : MonoBehaviour
             .AppendInterval(fadeTime)
             .AppendCallback(() =>
             {
-                themeIndex = (themeIndex + 1) % 5;
+                themeIndex = (themeIndex + 1) % targetIndex;
                 CustomColorTheme.ChangeTheme(themeIndex);
                 UpdateColorUi();
                 colorThemeUi.transform.DOLocalMoveX(40f, 0).SetRelative();
@@ -200,7 +200,7 @@ public class ScoreUIManager : MonoBehaviour
             .AppendInterval(fadeTime)
             .AppendCallback(() =>
             {
-                themeIndex = (themeIndex - 1 + 5) % 5;
+                themeIndex = (themeIndex - 1 + targetIndex) % targetIndex;
                 CustomColorTheme.ChangeTheme(themeIndex);
                 UpdateColorUi();
                 colorThemeUi.transform.DOLocalMoveX(-40f, 0).SetRelative();
@@ -216,7 +216,7 @@ public class ScoreUIManager : MonoBehaviour
     }
 
     public void UpdateColorUi()
-    {
+    {        
         theme = CustomColorTheme.GetColors();
         redIm.color = theme.BallColorRed;
         blueIm.color = theme.BallColorBlue;
@@ -228,6 +228,8 @@ public class ScoreUIManager : MonoBehaviour
         scoreText.color = theme.TextColor;
         unlockedText.color = theme.TextColor;
         bow.color = theme.BallColorBlue;
+        leftTargetScore.color = theme.TextColor;
+        rightTargetScore.color = theme.TextColor;
         Color tmp = theme.BallColorBlue;
         tmp.a = 0.25f;
         backBow.color = tmp;
