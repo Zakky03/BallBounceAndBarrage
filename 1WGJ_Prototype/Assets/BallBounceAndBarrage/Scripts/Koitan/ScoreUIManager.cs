@@ -53,6 +53,10 @@ public class ScoreUIManager : MonoBehaviour
     Image RightButton;
     [SerializeField]
     Image LeftButton;
+    [SerializeField]
+    Image LeftLock;
+    [SerializeField]
+    Image RightLock;
 
     Sequence scoreSeq;
 
@@ -65,6 +69,7 @@ public class ScoreUIManager : MonoBehaviour
         UpdateColorUi();
         left = Score.score;
         stackScore = PlayerPrefs.GetInt("Score", 0);
+        themeIndex = CustomColorTheme.GetThemeNum();
         PlayerPrefs.SetInt("Score", stackScore + left);
         //ターゲットスコアの計算
         for (int i = 0; i < targetScore.Length; i++)
@@ -85,6 +90,8 @@ public class ScoreUIManager : MonoBehaviour
         else
         {
             targetIndex = targetScore.Length;
+            leftTargetScore.text = targetScore[targetIndex - 2].ToString();
+            rightTargetScore.text = targetScore[targetIndex - 1].ToString();
         }
     }
 
@@ -95,7 +102,7 @@ public class ScoreUIManager : MonoBehaviour
         scoreText.text = Score.score + Environment.NewLine + stackScore;
         //バー更新  
         Vector2 tmp = bow.rectTransform.sizeDelta;
-        if(targetIndex<targetScore.Length)
+        if (targetIndex < targetScore.Length)
         {
             tmp.x = maxBowSize * (stackScore - targetScore[targetIndex - 1]) / (targetScore[targetIndex] - targetScore[targetIndex - 1]);
         }
@@ -104,6 +111,32 @@ public class ScoreUIManager : MonoBehaviour
             tmp.x = maxBowSize;
         }
         bow.rectTransform.sizeDelta = tmp;
+        //Lock
+        if (targetIndex < targetScore.Length)
+        {
+            if (themeIndex == targetIndex - 1)
+            {
+                RightLock.gameObject.SetActive(true);
+            }
+            else
+            {
+                RightLock.gameObject.SetActive(false);
+            }
+
+            if (themeIndex == 0)
+            {
+                LeftLock.gameObject.SetActive(true);
+            }
+            else
+            {
+                LeftLock.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            RightLock.gameObject.SetActive(false);
+            LeftLock.gameObject.SetActive(false);
+        }
     }
 
     private void AppendScore(int target, float duration = 1f)
@@ -236,7 +269,7 @@ public class ScoreUIManager : MonoBehaviour
         greenIm.color = theme.BallColorGreen;
         fieldIm.color = theme.FieldColor;
         colorText.color = theme.TextColor;
-        colorText.text = "Color " + themeIndex;
+        colorText.text = theme.ThemeName;
         leftText.color = theme.TextColor;
         scoreText.color = theme.TextColor;
         unlockedText.color = theme.TextColor;
@@ -246,5 +279,11 @@ public class ScoreUIManager : MonoBehaviour
         Color tmp = theme.BallColorBlue;
         tmp.a = 0.25f;
         backBow.color = tmp;
+    }
+
+    [ContextMenu("ScoreReset")]
+    public void ResetScore()
+    {
+        PlayerPrefs.DeleteKey("Score");
     }
 }
