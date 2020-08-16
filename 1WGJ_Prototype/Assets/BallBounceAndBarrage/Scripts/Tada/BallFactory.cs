@@ -27,7 +27,10 @@ public class BallFactory : MonoBehaviour
 
     public static Ball GetInstance()
     {
-        Ball ret = pool.GetInstance().GetComponent<Ball>();
+        GameObject obj = pool.GetInstance();
+        if (obj == null) return null;
+
+        Ball ret = obj.GetComponent<Ball>();
         ret.Init();
         return ret;
     }

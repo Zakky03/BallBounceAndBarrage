@@ -16,9 +16,11 @@ public class ColorSetter : MonoBehaviour
 
     private void Start()
     {
+        // 色を変更
+        SetColors(CustomColorTheme.GetColors());
+
         // 色変更の登録
         CustomColorTheme.RegisterMethod(SetColors);
-        CustomColorTheme.ChangeTheme(Random.Range(0, CustomColorTheme.Instance.themes.Count));
     }
 
     private void OnDestroy()

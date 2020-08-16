@@ -78,6 +78,13 @@ public class Ball : MonoBehaviour
         //落ちた時ボールの色に応じて状態が変化する
         while (transform.position.y <= -tmp)
         {
+            // もしゲームが終了していたなら無視する
+            if (Score.Finished)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+
             switch (ballState)
             {
                 case BALL_STATE.GREEN:
@@ -103,7 +110,7 @@ public class Ball : MonoBehaviour
             vec.y += tmp * 2;
             transform.position = vec;
             // エフェクトを出す
-            EffectFactory.Play(transform.position - new Vector3(0f, 0.2f, 0f), (int)ballState);
+            EffectFactory.Play(eEffectType.Bubble, transform.position - new Vector3(0f, 0.2f, 0f), (int)ballState);
         }
         //あがった時は変化なし
         while (transform.position.y >= tmp)
@@ -137,17 +144,25 @@ public class Ball : MonoBehaviour
                 Score.ScoreAdder();
                 //GameObject newBall = Instantiate(ball);
                 Ball newBall = BallFactory.GetInstance(); // by tada
-                newBall.transform.position = this.transform.position;
-                newBall.GetComponent<Rigidbody2D>().velocity =
-                    Quaternion.Euler(0, 0, Random.Range(-30f, 30f)) * rigidbody2d.velocity.normalized * 10f;
+                if (newBall != null)
+                {
+                    newBall.transform.position = this.transform.position;
+                    newBall.GetComponent<Rigidbody2D>().velocity =
+                        Quaternion.Euler(0, 0, Random.Range(-30f, 30f)) * rigidbody2d.velocity.normalized * 10f;
+                    newBall.PlayEffect();
+                }
                 StateAndColorSetter(BALL_STATE.BLUE);
                 // 2つの玉からエフェクトを出す
-                PlayEffect(); newBall.PlayEffect();
+                PlayEffect(); 
                 break;
 
             case BALL_STATE.RED:
 
+                // 死亡エフェクトを出す
+                EffectFactory.Play(eEffectType.Burst,transform.position, (int)BALL_STATE.RED);
                 Score.GameOver();
+                // ボールを消す
+                gameObject.SetActive(false);
                 break;
         }
     }

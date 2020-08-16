@@ -80,6 +80,9 @@ public class CustomColorTheme : TadaLib.SingletonMonoBehaviour<CustomColorTheme>
     [field: SerializeField]
     public List<ColorTheme> themes { private set; get; }
 
+    [SerializeField]
+    private int initialThemeIndex = 0;
+
     // 現在選択中のテーマ
     public ColorTheme curTheme { private set; get; }
 
@@ -93,7 +96,7 @@ public class CustomColorTheme : TadaLib.SingletonMonoBehaviour<CustomColorTheme>
 
         UnityEngine.Assertions.Assert.IsFalse(themes.Count == 0);
         foreach (var theme in themes) theme.Init();
-        curTheme = themes[0];
+        curTheme = themes[initialThemeIndex];
     }
 
     public static ColorTheme GetColors()

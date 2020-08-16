@@ -13,13 +13,13 @@ public class Score : MonoBehaviour
     //シーン内のボールの数保存
     public static int ballNum;
 
-    private static bool finished;
+    public static bool Finished { private set; get; }
 
     void Awake()
     {
         //Awakeでボールの数初期化
         ballNum = 0;
-        finished = false;
+        Finished = false;
     }
     // Start is called before the first frame update
     void Start()
@@ -50,9 +50,9 @@ public class Score : MonoBehaviour
     //ゲームオーバーになる
     static public void GameOver()
     {
-        if (finished) return;
+        if (Finished) return;
 
-        finished = true;
+        Finished = true;
 
         //if (highScore < score) highScore = score;
         highScore = Mathf.Max(highScore, score);
