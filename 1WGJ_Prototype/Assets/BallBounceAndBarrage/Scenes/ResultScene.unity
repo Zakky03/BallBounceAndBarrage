@@ -2721,7 +2721,7 @@ MonoBehaviour:
   stackScore: 100
   left: 0
   unlockedText: {fileID: 1215164948}
-  targetScore: 00000000140000003200000064000000c8000000
+  targetScore: 00000000140000003200000064000000c80000002c010000
   leftTargetScore: {fileID: 199892196}
   rightTargetScore: {fileID: 1055035431}
   colorThemeUi: {fileID: 1989305611}
