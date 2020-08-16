@@ -17,7 +17,7 @@ namespace TadaLib
                     Type t = typeof(T);
 
                     instance = (T)FindObjectOfType(t);
-                    Assert.IsNotNull(instance, t + " をアタッチしているGameObjectはありません");
+                    //Assert.IsNotNull(instance, t + " をアタッチしているGameObjectはありません");
                 }
 
                 return instance;

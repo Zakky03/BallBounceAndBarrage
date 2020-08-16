@@ -14,13 +14,18 @@ public class ColorSetter : MonoBehaviour
     [SerializeField]
     private List<TextMeshProUGUI> texts;
 
-    [SerializeField]
-    private int initialColorIndex = 0;
-
     private void Start()
     {
-        CustomColorTheme.ChangeTheme(Random.Range(0, CustomColorTheme.Instance.themes.Count));// initialColorIndex);
-        SetColors(CustomColorTheme.GetColors());
+        // 色変更の登録
+        CustomColorTheme.RegisterMethod(SetColors);
+        CustomColorTheme.ChangeTheme(Random.Range(0, CustomColorTheme.Instance.themes.Count));
+    }
+
+    private void OnDestroy()
+    {
+        // 色変更の登録を破棄
+        if (CustomColorTheme.Instance != null) 
+           CustomColorTheme.UnRegisterMethod(SetColors);
     }
 
     public void SetColors(ColorTheme theme)
