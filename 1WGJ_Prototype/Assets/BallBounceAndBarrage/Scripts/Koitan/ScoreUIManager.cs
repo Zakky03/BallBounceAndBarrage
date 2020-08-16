@@ -18,11 +18,19 @@ public class ScoreUIManager : MonoBehaviour
     int debugScore;
     [SerializeField]
     int stackScore;
+    [SerializeField]
+    int left;
     int bowScore = 0;
     [SerializeField]
     TextMeshProUGUI unlockedText;
     [SerializeField]
     int[] targetScore;
+    int targetIndex = 0;
+    [SerializeField]
+    TextMeshProUGUI leftTargetScore;
+    [SerializeField]
+    TextMeshProUGUI rightTargetScore;
+    float maxBowSize = 400f;
     [SerializeField]
     CanvasGroup colorThemeUi;
     bool isChanging;
@@ -55,30 +63,57 @@ public class ScoreUIManager : MonoBehaviour
         //初期化
         unlockedText.gameObject.SetActive(false);
         UpdateColorUi();
+        left = Score.score;
+        stackScore = PlayerPrefs.GetInt("Score", 0);
+        PlayerPrefs.SetInt("Score", stackScore + left);
+        //ターゲットスコアの計算
+        for (int i = 0; i < targetScore.Length; i++)
+        {
+            if (targetScore[i] > stackScore)
+            {
+                targetIndex = i;
+                leftTargetScore.text = targetScore[i - 1].ToString();
+                rightTargetScore.text = targetScore[i].ToString();
+                break;
+            }
+        }
         //text表示    
-        scoreText.text = debugScore + Environment.NewLine + stackScore;
-        AppendScore(stackScore, stackScore + debugScore);
+        BowMove();
+
     }
 
     // Update is called once per frame
     void Update()
     {
         //text更新
-        scoreText.text = debugScore + Environment.NewLine + stackScore;
+        scoreText.text = Score.score + Environment.NewLine + stackScore;
         //バー更新  
         Vector2 tmp = bow.rectTransform.sizeDelta;
-        tmp.x = stackScore;
+        tmp.x = maxBowSize * (stackScore - targetScore[targetIndex - 1]) / (targetScore[targetIndex] - targetScore[targetIndex - 1]);
         bow.rectTransform.sizeDelta = tmp;
     }
 
-    private void AppendScore(int startBow,int endBow,float duration = 1f)
+    private void AppendScore(int target, float duration = 1f)
     {
         scoreSeq.Append(
              DOTween.To
             (
-            () => stackScore = startBow,　     //何に
+            () => stackScore,　     //何に
             (n) => stackScore = n,　//何を
-            endBow,　              //どこまで(最終的な値)
+            target,　              //どこまで(最終的な値)
+            duration               //どれくらいの時間
+            )
+            .SetEase(Ease.InExpo));
+    }
+
+    private void AppendScorePunch(int target, float duration = 1f)
+    {
+        scoreSeq.Append(
+             DOTween.To
+            (
+            () => stackScore,　     //何に
+            (n) => stackScore = n,　//何を
+            target,　              //どこまで(最終的な値)
             duration               //どれくらいの時間
             )
             .SetEase(Ease.InExpo))
@@ -91,8 +126,27 @@ public class ScoreUIManager : MonoBehaviour
             .AppendInterval(0.5f)
             .AppendCallback(() =>
             {
-                AppendScore(stackScore, stackScore + debugScore);
+                targetIndex++;
+                BowMove();
             });
+    }
+
+    void BowMove()
+    {
+        leftTargetScore.text = targetScore[targetIndex - 1].ToString();
+        rightTargetScore.text = targetScore[targetIndex].ToString();
+        if (targetScore[targetIndex] <= stackScore + left) //レベルアップ
+        {
+            left -= targetScore[targetIndex] - stackScore;
+            AppendScorePunch(targetScore[targetIndex]);
+            Debug.Log("target:" + targetScore[targetIndex] + ", left:" + left);
+        }
+        else
+        {
+            AppendScore(stackScore + left);
+            left = 0;
+            Debug.Log("target:" + stackScore + left + ", left:" + left);
+        }
     }
 
     public void ChangeGroupNext()
