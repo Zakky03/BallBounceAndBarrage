@@ -18,8 +18,11 @@ public class ScoreUIManager : MonoBehaviour
     int debugScore;
     [SerializeField]
     int stackScore;
+    int bowScore = 0;
     [SerializeField]
     TextMeshProUGUI unlockedText;
+    [SerializeField]
+    int[] targetScore;
     [SerializeField]
     CanvasGroup colorThemeUi;
     bool isChanging;
@@ -42,29 +45,19 @@ public class ScoreUIManager : MonoBehaviour
     Image RightButton;
     [SerializeField]
     Image LeftButton;
+
+    Sequence scoreSeq;
+
     // Start is called before the first frame update
     void Start()
     {
+        scoreSeq = DOTween.Sequence();
         //初期化
         unlockedText.gameObject.SetActive(false);
         UpdateColorUi();
         //text表示    
         scoreText.text = debugScore + Environment.NewLine + stackScore;
-        //バー増やす
-        DOTween.To
-            (
-            () => stackScore,　     //何に
-            (n) => stackScore = n,　//何を
-            stackScore + debugScore,　              //どこまで(最終的な値)
-            1f               //どれくらいの時間
-            )
-            .SetEase(Ease.InExpo)
-            .OnComplete(() =>
-            {
-                backBow.rectTransform.DOPunchPosition(Vector3.right * 10f, 0.5f);
-                unlockedText.gameObject.SetActive(true);
-            }
-            );
+        AppendScore(stackScore, stackScore + debugScore);
     }
 
     // Update is called once per frame
@@ -76,6 +69,30 @@ public class ScoreUIManager : MonoBehaviour
         Vector2 tmp = bow.rectTransform.sizeDelta;
         tmp.x = stackScore;
         bow.rectTransform.sizeDelta = tmp;
+    }
+
+    private void AppendScore(int startBow,int endBow,float duration = 1f)
+    {
+        scoreSeq.Append(
+             DOTween.To
+            (
+            () => stackScore = startBow,　     //何に
+            (n) => stackScore = n,　//何を
+            endBow,　              //どこまで(最終的な値)
+            duration               //どれくらいの時間
+            )
+            .SetEase(Ease.InExpo))
+            .AppendCallback(() =>
+            {
+                backBow.rectTransform.DOPunchPosition(Vector3.right * 10f, 0.5f);
+                unlockedText.gameObject.SetActive(true);
+            }
+            )
+            .AppendInterval(0.5f)
+            .AppendCallback(() =>
+            {
+                AppendScore(stackScore, stackScore + debugScore);
+            });
     }
 
     public void ChangeGroupNext()
