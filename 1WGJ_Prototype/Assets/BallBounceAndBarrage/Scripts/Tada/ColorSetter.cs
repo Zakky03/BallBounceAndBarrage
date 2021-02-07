@@ -13,6 +13,8 @@ public class ColorSetter : MonoBehaviour
     private List<SpriteRenderer> fields;
     [SerializeField]
     private List<TextMeshProUGUI> texts;
+    [SerializeField]
+    private List<UnityEngine.UI.Image> buttons;
 
     private void Start()
     {
@@ -36,5 +38,6 @@ public class ColorSetter : MonoBehaviour
         foreach (var sr in walls) sr.color = theme.WallColor;
         foreach (var sr in fields) sr.color = theme.FieldColor;
         foreach (var txt in texts) txt.color = theme.TextColor;
+        foreach (var img in buttons) img.color = theme.TextColor;
     }
 }
