@@ -4,6 +4,23 @@ using UnityEngine;
 
 public class Bow : MonoBehaviour
 {
+    private enum eInputType
+    {
+        Keyboard,
+        Touch,
+    }
+
+    [SerializeField]
+    private eInputType inputType;
+
+    [SerializeField]
+    private Joystick joyStick;
+
+    [SerializeField]
+    private TadaLib.CustomButton buttonL;
+    [SerializeField]
+    private TadaLib.CustomButton buttonR;
+
     [SerializeField]
     float ω;
     float θ;
@@ -36,18 +53,28 @@ public class Bow : MonoBehaviour
     {
         //ボウを回転させる
         θ = 0f;
-        if (Input.GetButton("Fire1") || Input.GetKey(KeyCode.Z))
+        if (inputType == eInputType.Keyboard)
         {
-            θ = ω;
+            if (Input.GetButton("Fire1") || Input.GetKey(KeyCode.Z))
+            {
+                θ = ω;
+            }
+            if (Input.GetButton("Fire2") || Input.GetKey(KeyCode.X))
+            {
+                θ = -ω;
+            }
         }
-        if (Input.GetButton("Fire2") || Input.GetKey(KeyCode.X))
+        else if(inputType == eInputType.Touch)
         {
-            θ = -ω;
+            if(buttonL.IsPushed) θ += ω;
+            if(buttonR.IsPushed) θ -= ω;
         }
+
         rigidbody2d.angularVelocity = θ;
 
         //ボウの横移動
-        rigidbody2d.velocity += new Vector2(100f * Input.GetAxis("Horizontal") * Time.deltaTime, 0f);
+        float moveX = (inputType == eInputType.Keyboard) ? Input.GetAxis("Horizontal") : joyStick.Horizontal;
+        rigidbody2d.velocity += new Vector2(100f * moveX * Time.deltaTime, 0f);
 
         //ボウの高さを一定にする
         {
