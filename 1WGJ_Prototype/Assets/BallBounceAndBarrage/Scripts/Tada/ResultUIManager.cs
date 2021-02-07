@@ -14,6 +14,9 @@ public class ResultUIManager : MonoBehaviour
     [SerializeField]
     private Button titleButton;
 
+    [SerializeField]
+    private BannerViewer banner_;
+
     public void OnRankingButtonClick()
     {
         rankingButton.interactable = false;
@@ -23,12 +26,14 @@ public class ResultUIManager : MonoBehaviour
 
     public void OnRetryButtonClick()
     {
+        banner_.Destroy();
         retryButton.interactable = false;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
     }
 
     public void OnTitleButtonClick()
     {
+        banner_.Destroy();
         titleButton.interactable = false;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
     }
